@@ -4,7 +4,8 @@
 \alias{writeBags}
 \title{writeBags function}
 \usage{
-writeBags(..., dir = "", addPass = 0, blockName = NULL)
+writeBags(..., dir = "", addPass = 0, countBorder = TRUE,
+  blockName = NULL)
 }
 \arguments{
 \item{dir}{[value]. Default is ""}
