@@ -11,6 +11,7 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
+
 makeBlock <- function(l, blockName, pile = TRUE, serpentinePlot = FALSE, startSerp = FALSE) {
 	flipInt <- function(x) {(x - max(x) - 1) * -1}
 	if(!is.list(l)) l <- list(l)

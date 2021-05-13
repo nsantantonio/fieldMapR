@@ -11,6 +11,7 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
+
 printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName = NULL){
  	
 	if(class(plots) == "fieldPlots"){

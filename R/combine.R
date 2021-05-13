@@ -10,7 +10,9 @@
 #' @examples none
 #' @export
 combine <- function(x1, x2, pile = FALSE) {
-	if (!all(x1@borderPasses == x2@borderPasses)) warning("'borderPasses' dont match! First borderPasses will be kept. Unexpected behavior may result downstream")
+	if(!(all(is.na(x1@borderPasses)) & all(is.na(x2@borderPasses)))) {
+		if (!all(x1@borderPasses == x2@borderPasses)) warning("'borderPasses' dont match! First borderPasses will be kept. Unexpected behavior may result downstream")
+	}
 	# if (!all(x1@trialName == x2@trialName)) warning("'trialName's dont match! First trialName will be kept. Unexpected behavior may result downstream")
 	if (pile) {
 		mat <- combineMat(x1, x2)
