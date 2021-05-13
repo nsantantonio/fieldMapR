@@ -9,7 +9,8 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
-printBags <- function(plots, addPass = 0, blockName = NULL){
+
+printBags <- function(plots, addPass = 0, countBorder = TRUE, blockName = NULL){
 	flipInt <- function(x) {(x - max(x) - 1) * -1}
  	
 	if(class(plots) == "fieldPlots"){
@@ -24,10 +25,17 @@ printBags <- function(plots, addPass = 0, blockName = NULL){
 		stop("must provide an object of class 'fieldPlots' or 'fieldBlock")
 	}
 
+	if(!countBorder){
+		if(!is.na(plots@borderPasses[1])) {
+	 		m <- m[, -plots@borderPasses]
+	 		trial <- trial[, -plots@borderPasses]
+	 	}
+	}	
+
  	ranges <- flipInt(row(m))
  	passes <- col(m) + addPass
 
- 	getPasses <- function(x, rmPass = plots@borderPasses){
+ 	getPasses <- function(x, rmPass = NA){
 	 	if(!is.na(rmPass[1])) {
 	 		x <- x[, -rmPass]
 	 	}
