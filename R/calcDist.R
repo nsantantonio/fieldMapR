@@ -13,7 +13,7 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
-calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE, units = "ft", digits = 0){
+calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE, units = "ft", digits = NULL){
 	if(length(pt1) == 0) stop("Please provide a valid plot number for point 1")
 	if(length(pt2) == 0) stop("Please provide a valid plot number for point 2")
 
@@ -30,7 +30,7 @@ calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE
 	if(printDist){
 		arrows(midptPrint[1], midptPrint[2], pt2Print[1], pt2Print[2], angle = 90, length = arlen)
 		arrows(midptPrint[1], midptPrint[2], pt1Print[1], pt1Print[2], angle = 90, length = arlen)
-		if(digits > 0) distance <- round(distance, digits)
+		if(!is.null(digits)) distance <- round(distance, digits)
 		text(midptLabPrint[1], midptLabPrint[2], labels = paste0(distance, " ", units), srt = angle)
 	} else {
 		return(distance)
