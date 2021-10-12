@@ -4,17 +4,17 @@
 \alias{drawLegend}
 \title{drawLegend function}
 \usage{
-drawLegend(plotList, boundry, shiftLeg, cols, scaleLeg = 0.33,
-  rotateLabs = 0, ...)
+drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
+  labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, ...)
 }
 \arguments{
 \item{plotList}{[value]}
 
 \item{boundry}{[value]}
 
-\item{shiftLeg}{[value]}
-
 \item{cols}{[value]}
+
+\item{shiftLeg}{[value]}
 
 \item{scaleLeg}{[value]. Default is 0.33}
 

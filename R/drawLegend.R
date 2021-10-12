@@ -12,7 +12,8 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
-drawLegend <- function(plotList, boundry, shiftLeg, cols, scaleLeg = 0.33, rotateLabs = 0, ...){
+drawLegend <- function(plotList, boundry, cols, shiftLeg = c(0,0), labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, ...){
+	if(is.null(labNames)) labNames <- sapply(plotList, function(x) x@trialName)
 	ftPoints <- boundry$points
 	ftPointsLeg <- sweep(rbind(ftPoints, ftPoints[1,]) * scaleLeg, 2, shiftLeg, "+")
 	lines(ftPointsLeg)
