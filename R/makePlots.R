@@ -2,7 +2,7 @@
 #'
 #' function to (do something)
 #'
-#' @param trialName [value]
+#' @param trial [value]
 #' @param ranges [value]
 #' @param passes [value]
 #' @param rangeDist [value]
@@ -29,8 +29,39 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
+# ranges = 20; passes = 30; rangeDist = 16; passDist = 5; rstart = 1; pstart = 1; angle = 0; plotNo = 1000; blockSize = ranges * passes; nBlock = 1; serpentine = TRUE; startSerp = FALSE; transpose = FALSE; ref = c(0,0); border = 0; borderName = "B"; borderPlotNo = 1; updateB = TRUE; ignorePasses = NULL; fieldViewMatrix = TRUE; fill = FALSE; fillBlock = FALSE; Line = NULL; Pedigree = NULL; Entry = NULL
+makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, transpose = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL){
+	if (class(trial) %in% "trialDesign"){
+		if(!all(order(trial@plotNo) == 1:length(trial@plotNo))){
+			stop("Plots out of order! Please order plots in acensding order!")
+		}
+		blockSize <- unique(table(trial@plotInfo[["Block"]]))
+		nBlock <- max(trial@plotInfo[["Block"]])
+		lastPlot <- max(trial@plotNo)
+		plotName <- trial@plotName
+		if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
+			plotNoGiven <- TRUE
+			plotNo <- trial@plotNo
+		} else {
+			plotNoGiven <- FALSE
+			plotNo <- min(trial@plotNo) - 1
+		}
+		trialName <- unique(trial@trialName)
+		if(length(trialName) > 1) stop("More than one trial in plots!")
+		Entry <- trial@Entry
+		Line <- trial@Line
+		Pedigree <- trial@Pedigree
+		# or should I try to use S4 throughout? convert args to s4 trialDesign?
+	} else if (is.character(trial) & length(trial) == 1) {
+		trialName <- trial
+		if(is.null(Entry)) class(Entry) <- "integer"
+		if(is.null(Line)) class(Line) <- "character"
+		if(is.null(Pedigree)) class(Pedigree) <- "character"
+		plotNoGiven <- if (length(plotNo) > 1 | is.character(plotNo)) TRUE else FALSE
+	} else {
+		stop("'trial' must be either a object of class 'trialDesign' or a character vector of length 1 with the trial name")
+	}
 
-makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, transpose = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE){
 	if(length(border) == 1) {
 		border <- c(border, border)
 	} else if(length(border) > 2){
@@ -40,24 +71,23 @@ makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1
 	whichRev <- if(startSerp) 1 else 0 
 	isSerp <- if(rstart %% 2 == whichRev) TRUE else FALSE
 
-	plotNoGiven <- if (length(plotNo) > 1 | is.character(plotNo)) TRUE else FALSE
-
 	if(plotNoGiven) {
 		plotIndex <- 1
 		allPlotNo <- plotNo
 		plotNo <- allPlotNo[1]
 		lastPlot <- allPlotNo[length(allPlotNo)]
 	} else {
-		if(blockSize > ranges * passes) {
+		maxN <- ranges * passes
+		if(sum(blockSize) > maxN) {
 			warning("block size cannot exceed the number of plots!")
-			blockSize <- ranges * passes
+			blockSize <- rep(maxN, nBlock)
 		}
 		series <- plotNo
-		step <- plotNo
+		step <- 10^floor(log10(plotNo))
 		plotNo <- plotNo + 1
-		maxN <- ranges * passes
-		maxB <- floor(maxN / blockSize)
 		lastPlot <- nBlock * series + blockSize 
+		# maxB <- floor(maxN / blockSize)
+		# lastPlot <- nBlock * series + blockSize 
 	}
 
 	print(paste0("Last Plot: ", lastPlot))
@@ -81,7 +111,7 @@ makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1
 	isfill <- FALSE
 	tooFar <- FALSE
 	saveRP <- TRUE
-	isLast <- if(blockSize > 0) FALSE else TRUE
+	isLast <- if(sum(blockSize) > 0) FALSE else TRUE
 	printLast <- FALSE
 	blockSwitch <- TRUE
 
@@ -126,7 +156,9 @@ makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1
 					break
 				}
 			} else {
-				if (plotNo == lastPlot) isLast <- TRUE
+				if (plotNo == lastPlot) {
+					isLast <- TRUE
+				}
 			}
 			if(length(ignorePasses)){
 				if(j %in% (ignorePasses - 1)) next
@@ -172,6 +204,7 @@ makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1
 				} else {
 					if(plotNo != borderName){
 						if(plotNo == series + blockSize){
+							# break
 							blockChange <- c(blockChange, list(c(flipInt(i + 1, ranges), j + 1)))
 							blockSwitch <- TRUE
 							series <- series + step
@@ -200,9 +233,9 @@ makePlots <- function(trialName, ranges, passes, rangeDist, passDist, rstart = 1
 		names(plotCornersRot) <- names(plotCorners)
 		centersRot <- split(rotate(do.call(rbind, plotCenters), angle), 1:length(plotCenters))
 		names(centersRot) <- names(plotCenters)
-		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, needStake = blockChange)
+		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
 	} else {
-		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, needStake = blockChange)
+		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
 	}
 	if(any(ref != 0)){
 		plots@centers <- lapply(plots@centers, function(x) x + ref)

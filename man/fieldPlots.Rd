@@ -3,14 +3,7 @@
 \docType{class}
 \name{fieldPlots}
 \alias{fieldPlots}
-\alias{rbind,fieldPlots-method}
-\alias{cbind,fieldPlots-method}
 \title{An S4 class to represent field plots}
-\usage{
-\S4method{rbind}{fieldPlots}(..., deparse.level = 1)
-
-\S4method{cbind}{fieldPlots}(..., deparse.level = 1)
-}
 \description{
 An S4 class to represent field plots
 }

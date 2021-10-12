@@ -4,15 +4,16 @@
 \alias{makePlots}
 \title{makePlots function}
 \usage{
-makePlots(trialName, ranges, passes, rangeDist, passDist, rstart = 1,
-  pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges *
-  passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE,
-  transpose = FALSE, ref = c(0, 0), border = 0, borderName = "B",
-  borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL,
-  fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE)
+makePlots(trial, ranges, passes, rangeDist = 16, passDist = 5,
+  rstart = 1, pstart = 1, angle = 0, plotNo = 1000,
+  blockSize = ranges * passes, nBlock = 1, serpentine = TRUE,
+  startSerp = FALSE, transpose = FALSE, ref = c(0, 0), border = 0,
+  borderName = "B", borderPlotNo = 1, updateB = TRUE,
+  ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE,
+  fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL)
 }
 \arguments{
-\item{trialName}{[value]}
+\item{trial}{[value]}
 
 \item{ranges}{[value]}
 
