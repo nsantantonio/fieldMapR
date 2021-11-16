@@ -36,7 +36,8 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 			stop("Plots out of order! Please order plots in acensding order!")
 		}
 		blockSize <- unique(table(trial@plotInfo[["Block"]]))
-		nBlock <- max(trial@plotInfo[["Block"]])
+		# nBlock <- max(trial@plotInfo[["Block"]])
+		nBlock <- length(unique(trial@plotInfo[["Block"]]))
 		lastPlot <- max(trial@plotNo)
 		plotName <- trial@plotName
 		if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
@@ -57,7 +58,13 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		if(is.null(Entry)) class(Entry) <- "integer"
 		if(is.null(Line)) class(Line) <- "character"
 		if(is.null(Pedigree)) class(Pedigree) <- "character"
-		plotNoGiven <- if (length(plotNo) > 1 | is.character(plotNo)) TRUE else FALSE
+		
+		if (length(plotNo) > 1 | is.character(plotNo) | {length(plotNo) == 1 & plotNo[[1]] == 1}) {
+			plotNoGiven <- TRUE
+		} else {
+			plotNoGiven <- FALSE
+		}
+
 	} else {
 		stop("'trial' must be either a object of class 'trialDesign' or a character vector of length 1 with the trial name")
 	}
@@ -131,7 +138,8 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 			if (isLast & printLast) {
 				# if(fill | j == (ranges - 1)) { 
 				# if(fill | isSerp & j == (border[1] + 1) | !isSerp & j == (passes - border[2]- 1)) { 
-				if(fill | isSerp & j == (border[1] + 1) | !isSerp & j == (passes - border[2])) { 
+				# if(fill | isSerp & j == (border[1] + 1) | !isSerp & j == (passes - border[2])) { # commented out Nov 4 2021
+				if(fill | isSerp & j == (border[1] - 1) | !isSerp & j == (passes - border[2])) { 
 					tooFar <- TRUE
 					if(saveRP){
 
@@ -252,5 +260,8 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		plots@borderPasses <- borderj + 1
 	}
 	plots@trialName <- trialName
+	if(!isLast){
+		warning("Plots ended before end of trial!")
+	}
 	return(plots)
 }
