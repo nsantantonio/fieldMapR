@@ -7,8 +7,8 @@
 #' @details [fill in details here]
 #' @examples none
 #' @export
-takeout <- function(takeoutFile, rowOrder = NULL){
-	coord <- read.csv(takeoutFile)
+takeout <- function(takeoutFile, rowOrder = NULL, ...){
+	coord <- read.csv(takeoutFile, ...)
 	txtCoords <- strsplit(gsub(".*/", "", coord$URL), ",")
 
 	if(is.null(rowOrder)) rowOrder <- 1:nrow(coord)

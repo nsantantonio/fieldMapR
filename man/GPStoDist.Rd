@@ -4,10 +4,10 @@
 \alias{GPStoDist}
 \title{GPStoDist function}
 \usage{
-GPStoDist(boundry, units = "ft", refPoint = NULL)
+GPStoDist(boundary, units = "ft", refPoint = NULL)
 }
 \arguments{
-\item{boundry}{[value]}
+\item{boundary}{[value]}
 
 \item{units}{[value]. Default is "ft"}
 
@@ -17,7 +17,7 @@ GPStoDist(boundry, units = "ft", refPoint = NULL)
 [value]
 }
 \description{
-function to (do something)
+function to  make fieldBoundary from matrix of GPS points. Returns a flattened matrix in feet (default) or meters (when units argument set to 'm')
 }
 \details{
 [fill in details here]

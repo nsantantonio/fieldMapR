@@ -67,3 +67,8 @@ rbind.fieldPlots <- function(...){
 
 	fieldPlots(centers = centers, corners = corners, matrix = mat, needStake = needStake, borderPasses = borderPasses, trialName = unL[["trialName"]][[1]])
 }
+
+#' @export
+length.fieldPlots <- function(fp){
+	sum(!is.na(fp@matrix))
+}

@@ -11,6 +11,10 @@
 #' @export
 rotate <- function(X, theta, deg = TRUE){
 	if (deg) theta <- theta * pi / 180
-	R <- matrix(c(cos(theta), sin(theta), -sin(theta), cos(theta)), 2, 2)
-	X %*% t(R)
+	if(theta != 0) {
+		R <- matrix(c(cos(theta), sin(theta), -sin(theta), cos(theta)), 2, 2)
+		return(X %*% t(R))
+	} else {
+		return(X)
+	}
 }

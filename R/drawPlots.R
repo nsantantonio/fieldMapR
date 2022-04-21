@@ -21,9 +21,13 @@ drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, pt
 		x <- x + trim
 		rbind(x, x[1,])
 	}
-	rdiff <- rtrim / 2
-	pdiff <- ptrim / 2
-	trim <- rotate(matrix(c(pdiff, -pdiff, -pdiff, pdiff, rdiff, rdiff, -rdiff, -rdiff), ncol = 2), angle)
+	if(length(ptrim) == 1) pdiff <- rep(ptrim / 2, 2) else pdiff <- ptrim[1:2]
+	if(length(rtrim) == 1) rdiff <- rep(rtrim / 2, 2) else rdiff <- rtrim[1:2]
+
+	# rdiff <- rtrim / 2
+	# pdiff <- ptrim / 2
+	# trim <- rotate(matrix(c(pdiff, -pdiff, -pdiff, pdiff, rdiff, rdiff, -rdiff, -rdiff), ncol = 2), angle)
+	trim <- rotate(matrix(c(pdiff[1], -pdiff[2], -pdiff[2], pdiff[1], rdiff[1], rdiff[1], -rdiff[2], -rdiff[2]), ncol = 2), angle)
 
 	plotLines <- lapply(plots@corners, trimPlots)
 	if(!add) plot(do.call(rbind, plotLines), asp = 1, type = 'n')

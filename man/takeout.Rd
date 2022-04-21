@@ -4,7 +4,7 @@
 \alias{takeout}
 \title{GPStoDist function}
 \usage{
-takeout(takeoutFile, rowOrder = NULL)
+takeout(takeoutFile, rowOrder = NULL, ...)
 }
 \arguments{
 \item{takeoutFile}{path to google takeout csv file.}

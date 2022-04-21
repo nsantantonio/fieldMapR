@@ -9,9 +9,9 @@
 #' @examples none
 #' @export
 rotateMap <- function(map, theta){
-	map$points <- rotate(map$points, theta)
-	boundRef <- apply(map$points, 2, min)
-	map$points <- sweep(map$points, 2, boundRef, "-")
-	map$angle <- map$angle + theta
+	map@points <- rotate(map@points, theta)
+	boundRef <- apply(map@points, 2, min)
+	map@points <- sweep(map@points, 2, boundRef, "-")
+	map@angle <- map@angle + theta
 	map
 }

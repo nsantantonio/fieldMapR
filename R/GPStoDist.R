@@ -1,18 +1,18 @@
 #' GPStoDist function
 #'
-#' function to (do something)
+#' function to  make fieldBoundary from matrix of GPS points. Returns a flattened matrix in feet (default) or meters (when units argument set to 'm')
 #'
-#' @param boundry [value]
+#' @param boundary [value]
 #' @param units [value]. Default is "ft"
 #' @param refPoint [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
 #' @examples none
 #' @export
-GPStoDist <- function(boundry, units = "ft", refPoint = NULL){		
-	if(is.null(refPoint)) refPoint <- apply(boundry, 2, min)
+GPStoDist <- function(boundary, units = "ft", refPoint = NULL){		
+	if(is.null(refPoint)) refPoint <- apply(boundary, 2, min)
 	reference <- refPoint
-	boundriesRef <- rbind(refPoint, boundry, boundry[1,])
+	boundriesRef <- rbind(refPoint, boundary, boundary[1,])
 	ftPoints <- list()
 	angles <- NULL
 	distances <- NULL
@@ -29,5 +29,5 @@ GPStoDist <- function(boundry, units = "ft", refPoint = NULL){
 		distances[i-1] <- nextPoint$distance
 	}
 
-	return(list(points = do.call(rbind, ftPoints), angle = angles, distance = distances, reference = reference))
+	return(fieldBoundary(points = do.call(rbind, ftPoints), angle = angles, distance = distances, reference = reference))
 }

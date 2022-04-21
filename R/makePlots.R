@@ -106,6 +106,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	inMiddle <- if(pstart > 1) TRUE else FALSE
 
 	passes <- passes + sum(border)
+	# inMiddle <- if({pstart > 1 & !isSerp} | {pstart < passes & pstart > border[1] & isSerp}) TRUE else FALSE
 
 	# borderPlotNo <- 1	
 
@@ -136,25 +137,19 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 				blockSwitch <- FALSE
 			}
 			if (isLast & printLast) {
-				# if(fill | j == (ranges - 1)) { 
 				# if(fill | isSerp & j == (border[1] + 1) | !isSerp & j == (passes - border[2]- 1)) { 
 				# if(fill | isSerp & j == (border[1] + 1) | !isSerp & j == (passes - border[2])) { # commented out Nov 4 2021
 				if(fill | isSerp & j == (border[1] - 1) | !isSerp & j == (passes - border[2])) { 
 					tooFar <- TRUE
 					if(saveRP){
-
 						R <<- i + 2
 						P <<- 1
 						saveRP <- FALSE
 					}
 				} else {
 					if(saveRP){
-						# blockChange <- c(blockChange, list(c(flipInt(i + 1, ranges), j + 1)))
-						# blockSwitch <- FALSE
 						R <<- i + 1
 						if(isSerp) {
-							# P <<- j + 2 + border[2]
-							# P <<- j - 1 - border[2]
 							P <<- j + 2 - sum(border)  # I think this is right. I still dont understand why +2...
 						} else {
 							P <<- j + 1 - border[1]
@@ -175,7 +170,6 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 			if(inMiddle){
 				shouldSkip <- if (isSerp & i == rstart-1){
 					j >= pstart - 1 + sum(border) # this is original and worked fine before. 
-					# j >= pstart + 1 - sum(border)
 				} else {
 					j < pstart - 1 + border[1]
 				}

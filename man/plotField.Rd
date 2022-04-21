@@ -4,12 +4,12 @@
 \alias{plotField}
 \title{plotField function}
 \usage{
-plotField(boundry, offset = 5, units = "ft", hshift = 3,
+plotField(boundary, offset = 5, units = "ft", hshift = 3,
   vshift = 1, showBoundry = TRUE, showPtNo = FALSE,
   sideLength = TRUE, ...)
 }
 \arguments{
-\item{boundry}{[value]}
+\item{boundary}{[value]}
 
 \item{offset}{[value]. Default is 5}
 
