@@ -59,6 +59,7 @@ Collate:
     'takeout.R'
     'transLatLon.R'
     'trialDesign.R'
+    'T3ize.R'
     'writeBags.R'
     'writeHarvMasterFile.R'
     'writeStakes.R'
