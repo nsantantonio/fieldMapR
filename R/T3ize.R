@@ -23,6 +23,12 @@ T3ize <- function(x){
 	}
 	x <- toupper(x)
 	x <- gsub("\"|\'|\`|,", "_", x)
+	
+	# this might be a bad idea having the dagger match, I just dont know how to recognize that charactre
+	endAst <- grep("\\*$|\\†$", x) 	
+	x[endAst] <- gsub("\\*|\\†", "", x[endAst])
+	midAst <- grep("\\*.+", x)
+	x[midAst] <- gsub("\\*", "_", x[midAst])
 	x <- gsub("__", "_", x)
 	x <- trimws(x)
 	xsplit <- strsplit(x, split = " ")
