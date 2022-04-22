@@ -5,7 +5,8 @@
 #' @param x vector of line names to be reformatted 
 #' @return formated line names
 #' @details uses T3 rules to reformat line names
-#' @examples none
+#' @examples 
+#' T3ize(c("VA96W-403WS*HS", "VA19W-165*", "VA19W-165†", "Jagger", "MCIA Venus", "FFR 555"))
 #' @export
 T3ize <- function(x){
 	rmSpace <- function(xx){
