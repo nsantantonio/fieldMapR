@@ -5,7 +5,7 @@
 #' @param coords [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 polygonArea <- function(coords){
 	if(class(coords) != "matrix" | ncol(coords) != 2) stop("please provide a two column matrix of coordinates, x & y")

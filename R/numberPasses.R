@@ -5,7 +5,7 @@
 #' @param startPt [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 numberPasses <- function(startPt, ...){
 

@@ -13,10 +13,10 @@
 #' @param showBorderNum [value]. Default is FALSE
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
-	
+	# plots = breederSeed; rtrim = c(0, 15); angle = hrAng; labAngle = hrAng - 90; color = c(colsAlpha[trialColors["breederSeed"]], "gray"); cex = plotCex; plotNos = showBno; showBorderNum = TRUE; ptrim = 1; rtrim = 2; add = TRUE;
 	trimPlots <- function(x) {
 		x <- x + trim
 		rbind(x, x[1,])
@@ -37,7 +37,7 @@ drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, pt
 	} else if(length(color) == 2){
 		bcol <- color[2]
 		color <- rep(color[1], length(plotLines))
-		color[grep("^[A-z]", names(plotLines))] <- bcol
+		color[names(plotLines) %in% plots@matrix[plots@fill]] <- bcol
 	} else {
 		if(length(color) != length(plotLines)) stop("please provide a color vector of length 1, 2 (for borders), or number of plots!")
 	}
@@ -46,7 +46,8 @@ drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, pt
 
 	printPlotNames <- names(plots@centers)
 	if(!showBorderNum){
-		bp <- grep("^[A-z]", printPlotNames)
+		# bp <- grep("^[A-z]", printPlotNames)
+		bp <- which(names(plotLines) %in% plots@matrix[plots@fill])
 		printPlotNames[bp] <- gsub("[0-9]", "", printPlotNames[bp])
 	}
 	if(plotNos) text(do.call(rbind, plots@centers), labels = printPlotNames, pch = 16, srt = labAngle, ...)

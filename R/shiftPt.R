@@ -9,7 +9,7 @@
 #' @param a2 [value]. Default is a
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 shiftPt <- function(pt, a = 0,  x = 0, y = 0, a2 = a){
 	newpt <- anglePoint(d = y, a + 90, ref = pt)

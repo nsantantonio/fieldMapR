@@ -12,6 +12,8 @@ writeBags(..., dir = "", addPass = 0, countBorder = TRUE,
 
 \item{addPass}{[value]. Default is 0}
 
+\item{countBorder}{logical. SHould the border be counted? Default is TRUE}
+
 \item{blockName}{[value]. Default is NULL}
 }
 \value{
@@ -24,5 +26,5 @@ function to (do something)
 [fill in details here]
 }
 \examples{
-none
+# none
 }

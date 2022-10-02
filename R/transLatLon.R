@@ -10,7 +10,7 @@
 #' @param units [value]. Default is "ft"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 transLatLon <- function(lat1, lon1, lat2, lon2, ref, units = "ft") {
 	d <- haversine(lat1, lon1, lat2, lon2, units = units)

@@ -7,7 +7,7 @@
 #' @slot borderPasses  numeric of borderPasses
 #' @slot trialName  character of trialName
 #' @export fieldPlots
-fieldPlots <- setClass("fieldPlots", slots = c(centers = "list", corners = "list", matrix = "matrix", needStake = "list", borderPasses = "numeric", trialName = "character", Entry = "integer", Line = "character", Pedigree = "character"))
+fieldPlots <- setClass("fieldPlots", slots = c(centers = "list", corners = "list", matrix = "matrix", fill = "matrix", needStake = "list", borderPasses = "numeric", trialName = "character", Entry = "matrix", Line = "matrix", Pedigree = "matrix"))
 
 #' @export
 cbind.fieldPlots <- function(...){
@@ -20,6 +20,10 @@ cbind.fieldPlots <- function(...){
 	if(length(unique(sapply(unL[["matrix"]], nrow))) > 1) stop("all fieldPlots must have the same number of ranges (matrix rows)")
 	
 	mat <- do.call(cbind, unL[["matrix"]])
+	fillmat <- do.call(cbind, unL[["fill"]])
+	linemat <- do.call(cbind, unL[["Line"]])
+	entmat <- do.call(cbind, unL[["Entry"]])
+	pedmat <- do.call(cbind, unL[["Pedigree"]])
 
 	centers <- unlist(unL[["centers"]], recursive = FALSE)
 	corners <- unlist(unL[["corners"]], recursive = FALSE)
@@ -33,7 +37,7 @@ cbind.fieldPlots <- function(...){
 		needStake <- c(needStake, stakei)
 		if(!is.na(unL[["borderPasses"]][[i]][1])) borderPasses <- c(borderPasses, unL[["borderPasses"]][[i]] + cc)
 	}
-	fieldPlots(centers = centers, corners = corners, matrix = mat, needStake = needStake, borderPasses = borderPasses, trialName = unL[["trialName"]][[1]])
+	fieldPlots(centers = centers, corners = corners, matrix = mat, fill = fillmat, Line = linemat, Entry = entmat, Pedigree = pedmat, needStake = needStake, borderPasses = borderPasses, trialName = unL[["trialName"]][[1]])
 }
 
 #' @export
@@ -48,6 +52,10 @@ rbind.fieldPlots <- function(...){
 	if(length(unique(sapply(unL[["matrix"]], ncol))) > 1) stop("all fieldPlots must have the same number of passes (matrix columns)")
 	
 	mat <- do.call(rbind, unL[["matrix"]])
+	fillmat <- do.call(rbind, unL[["fill"]])
+	linemat <- do.call(cbind, unL[["Line"]])
+	entmat <- do.call(cbind, unL[["Entry"]])
+	pedmat <- do.call(cbind, unL[["Pedigree"]])
 
 	centers <- unlist(unL[["centers"]], recursive = FALSE)
 	corners <- unlist(unL[["corners"]], recursive = FALSE)
@@ -65,10 +73,15 @@ rbind.fieldPlots <- function(...){
 	if(length(borderPasses) > 1) print("multiple border passes, unexpected results may follow")
 	borderPasses <- unlist(borderPasses)
 
-	fieldPlots(centers = centers, corners = corners, matrix = mat, needStake = needStake, borderPasses = borderPasses, trialName = unL[["trialName"]][[1]])
+	fieldPlots(centers = centers, corners = corners, matrix = mat, fill = fillmat, Line = linemat, Entry = entmat, Pedigree = pedmat, needStake = needStake, borderPasses = borderPasses, trialName = unL[["trialName"]][[1]])
 }
 
 #' @export
-length.fieldPlots <- function(fp){
-	sum(!is.na(fp@matrix))
+length.fieldPlots <- function(x){
+	sum(!is.na(x@matrix))
+}
+
+#' @export
+print.fieldPlots <- function(x, ...){
+	print(x@matrix)
 }

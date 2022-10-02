@@ -4,10 +4,11 @@
 #'
 #' @param dir [value]. Default is ""
 #' @param addPass [value]. Default is 0
+#' @param countBorder logical. SHould the border be counted? Default is TRUE
 #' @param blockName [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 writeBags <- function(..., dir = "", addPass = 0, countBorder = TRUE, blockName = NULL){
 	# if(!all(lapply(list(...), class) == "harvestBags")) stop("Arguments must be of class 'harvestBags'")

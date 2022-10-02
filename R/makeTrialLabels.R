@@ -13,7 +13,7 @@
 #' @param labPlots [value]. Default is TRUE
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 makeTrialLabels <- function(labPos, shiftLab, labNames, cols, a = 0, labh = 8, labw = 60, rotateLabs = 0, labPlots = TRUE, ...){
 	labh <- labh / 2

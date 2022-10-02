@@ -4,10 +4,10 @@
 \alias{combineMat}
 \title{combineMat function}
 \usage{
-combineMat(...)
+combineMat(..., sname = "matrix")
 }
 \arguments{
-\item{[value]}{}
+\item{sname}{[value].}
 }
 \value{
 [value]
@@ -19,5 +19,5 @@ function to (do something)
 [fill in details here]
 }
 \examples{
-none
+# none
 }

@@ -6,7 +6,7 @@
 #' @return formated line names
 #' @details uses T3 rules to reformat line names
 #' @examples 
-#' T3ize(c("VA96W-403WS*HS", "VA19W-165*", "VA19W-165†", "Jagger", "MCIA Venus", "FFR 555"))
+#' T3ize(c("VA96W-403WS*HS", "VA19W-165*", "VA20W-42**", "VA19W-165†", "Jagger", "MCIA Venus", "FFR 555"))
 #' @export
 T3ize <- function(x){
 	rmSpace <- function(xx){
@@ -26,8 +26,8 @@ T3ize <- function(x){
 	x <- gsub("\"|\'|\`|,", "_", x)
 	
 	# this might be a bad idea having the dagger match, I just dont know how to recognize that charactre
-	endAst <- grep("\\*$|\\†$", x) 	
-	x[endAst] <- gsub("\\*|\\†", "", x[endAst])
+	endAst <- grep("\\*$|\u2020$", x)
+	x[endAst] <- gsub("\\*|\u2020", "", x[endAst])
 	midAst <- grep("\\*.+", x)
 	x[midAst] <- gsub("\\*", "_", x[midAst])
 	x <- gsub("__", "_", x)

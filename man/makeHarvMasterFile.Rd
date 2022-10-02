@@ -8,13 +8,13 @@ makeHarvMasterFile(block, printPlotNo = TRUE, rmBorderPasses = TRUE,
   rmBorderRanges = FALSE)
 }
 \arguments{
+\item{block}{[value] Object of class 'fieldBlock'}
+
 \item{printPlotNo}{[value]. Should plot number be printed? Default is TRUE}
 
+\item{rmBorderPasses}{[value]. Should all border passes be removed? Default is FALSE}
+
 \item{rmBorderRanges}{[value]. Should all border ranges be removed? Default is FALSE}
-
-\item{block[value]}{Object of class 'fieldBlock'}
-
-\item{rmBorderRanges}{[value]. Should all border passes be removed? Default is FALSE}
 }
 \value{
 [value]
@@ -26,5 +26,5 @@ function to (do something)
 [fill in details here]
 }
 \examples{
-none
+# none
 }

@@ -1,16 +1,16 @@
 #' haversine function
 #'
-#' function to (do something)
+#' function to compute haversine distance based on two GPS coordinates. 
 #'
-#' @param lat1 [value]
-#' @param lon1 [value]
-#' @param lat2 [value]
-#' @param lon2 [value]
+#' @param lat1 numeric. latitude point 1.
+#' @param lon1 numeric. longitude point 1.
+#' @param lat2 numeric. latitude point 2.
+#' @param lon2 numeric. longitude point 2.
 #' @param r [value]. Default is 6371
-#' @param units [value]. Default is "km"
+#' @param units units to return. values can be 'km' for kilometers, 'm' for meters, 'mi' for miles, or 'ft' for feet. Default is "km"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples haversine(32.301087, -106.747767, 42.381671, -76.382452) # distance traveled from one grad school to another, in km
 #' @export
 haversine <- function(lat1, lon1, lat2, lon2, r = 6371, units = "km") {
 	hav <- function(theta)  sin(theta / 2)^2
@@ -20,6 +20,9 @@ haversine <- function(lat1, lon1, lat2, lon2, r = 6371, units = "km") {
 	if (units == "ft") {
 		d <- d * 3280.84
 		names(d) <- "ft"
+	} else if (units == "mi"){
+		d <- d * 0.621371
+		names(d) <- "mi"
 	} else if (units == "m"){
 		d <- d * 1000
 		names(d) <- "m"

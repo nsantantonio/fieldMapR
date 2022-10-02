@@ -19,5 +19,5 @@ function to reformat line names using T3 rules
 uses T3 rules to reformat line names
 }
 \examples{
-none
+T3ize(c("VA96W-403WS*HS", "VA19W-165*", "VA20W-42**", "VA19W-165†", "Jagger", "MCIA Venus", "FFR 555"))
 }

@@ -12,7 +12,7 @@
 #' @param sideLength [value]. Default is TRUE
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 plotField <- function(boundary, offset = 5, units = "ft", hshift = 3, vshift = 1, showBoundry = TRUE, showPtNo = FALSE, sideLength = TRUE, ...){
 	if(class(boundary) != "fieldBoundary" & is.matrix(boundary)){

@@ -7,7 +7,7 @@
 #' @param whichPlotCorner [value]. Default is whichCorner
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 getCorner <- function(plots, whichCorner = "bottomright", whichPlotCorner = whichCorner){
 	pos <- c(bottomleft = 1, bottomright = 2, topright = 3, topleft = 4)

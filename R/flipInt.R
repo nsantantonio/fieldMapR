@@ -1,12 +1,12 @@
 #' flipInt function
 #'
-#' function to (do something)
+#' function to flip integers. 5:10 becomes 10:5.
 #'
 #' @param x [value]
 #' @param maxx [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 flipInt <- function(x, maxx = NULL) {
 	if(is.null(maxx)) maxx <- max(x)

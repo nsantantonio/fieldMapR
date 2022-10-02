@@ -3,9 +3,10 @@
 #' function to make fieldBoundary from matrix of points. 
 #'
 #' @param m n x 2 matrix of points on boundary of field. the first row will be assumed to be the reference point if no argument is provided to 'reference'
+#' @param reference reference point. If NULL, reference is assumed to be first row in m
 #' @return object of class field boundary
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 matrixToDist <- function(m, reference = NULL){
 	# if(class(boundary) != "fieldBoundry"){

@@ -7,67 +7,71 @@
 makePlots(trial, ranges, passes, rangeDist = 16, passDist = 5,
   rstart = 1, pstart = 1, angle = 0, plotNo = 1000,
   blockSize = ranges * passes, nBlock = 1, serpentine = TRUE,
-  startSerp = FALSE, transpose = FALSE, ref = c(0, 0), border = 0,
-  borderName = "B", borderPlotNo = 1, updateB = TRUE,
-  ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE,
-  fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL)
+  startSerp = FALSE, ref = c(0, 0), border = 0, borderName = "B",
+  borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL,
+  fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE,
+  Line = NULL, Pedigree = NULL, Entry = NULL)
 }
 \arguments{
-\item{trial}{[value]}
+\item{trial}{either an obect of class 'trialDesign' or a character vector of length 1 for the trial name.}
 
-\item{ranges}{[value]}
+\item{ranges}{numeric. number of ranges (rows)}
 
-\item{passes}{[value]}
+\item{passes}{numeric. number of passes (columns)}
 
-\item{rangeDist}{[value]}
+\item{rangeDist}{numeric. distance between ranges, on center.}
 
-\item{passDist}{[value]}
+\item{passDist}{numeric. distance between passes, on center.}
 
-\item{rstart}{[value]. Default is 1}
+\item{rstart}{numeric. range to start plots on. Default is 1}
 
-\item{pstart}{[value]. Default is 1}
+\item{pstart}{numeric. pass to start plots on. Default is 1}
 
-\item{angle}{[value]. Default is 0}
+\item{angle}{angle to . Default is 0}
 
-\item{plotNo}{[value]. Default is 1000}
+\item{plotNo}{value to use for plot numbers (series, either 100, 1000 etc). or the actual plot numbers desired (length of number of plots). Default is 1000}
 
-\item{blockSize}{[value]. Default is ranges * passes}
+\item{blockSize}{numeric. Size of a block. Default is ranges * passes}
 
-\item{nBlock}{[value]. Default is 1}
+\item{nBlock}{numeric. Number of blocks. If greater than one, the series will be updated once the block is filled. I.e. if block size is 120, and there are 240 plots, then teh first block will contain plots 1001:1120 and the second block will contain plots 2001:2120. Default is 1}
 
-\item{serpentine}{[value]. Default is TRUE}
+\item{serpentine}{Should plot numbers be planted serpentine?. Default is TRUE}
 
-\item{startSerp}{[value]. Default is FALSE}
+\item{startSerp}{Should plots start numbering serpentine? Useful when the user wants to change the normal direction at ranges greater than 1. Default is FALSE}
 
-\item{transpose}{[value]. Default is FALSE}
+\item{ref}{Reference point for all plots to start at. Typically this will be the bottom left point for teh first plot. Default is c(0,0)}
 
-\item{ref}{[value]. Default is c(0,0)}
+\item{border}{numeric. How many passes should be borders? If length is 1 than both sides will have the same number of border passes. If length is 2, then first element specifies number of left border passes and second element specifies number of right border passes. Default is 0}
 
-\item{border}{[value]. Default is 0}
+\item{borderName}{character. What should borders be named. Default is "B"}
 
-\item{borderName}{[value]. Default is "B"}
+\item{borderPlotNo}{integer. What number should be used to start counting border plots? Default is 1}
 
-\item{borderPlotNo}{[value]. Default is 1}
+\item{updateB}{logical.Shoud border numbers be updated? Default is TRUE}
 
-\item{updateB}{[value]. Default is TRUE}
+\item{ignorePasses}{numeric. Which passes should be ignored when plotting? Useful when the users wants to skip passes, example, when two trials are side by side in teh same block. Default is NULL}
 
-\item{ignorePasses}{[value]. Default is NULL}
+\item{fieldViewMatrix}{Should the matrix represent the field view? I.e. the first plots will be in the last rows of the matrix (i.e. the bottom). Default is TRUE}
 
-\item{fieldViewMatrix}{[value]. Default is TRUE}
+\item{fill}{logical. Should the remaining plots in eh range be filled with fill?  Default is FALSE}
 
-\item{fill}{[value]. Default is FALSE}
+\item{fillBlock}{logical. Should the rest of the block be filled with fill? Default is FALSE}
 
-\item{fillBlock}{[value]. Default is FALSE}
+\item{Line}{character. Optional vector of line names. Default is NULL}
+
+\item{Pedigree}{character. Optional vector of line pedigrees. Default is NULL}
+
+\item{Entry}{integer. Optional vector of Entry numbers names. Default is NULL}
 }
 \value{
-[value]
+object of class 'fieldPlots'
 }
 \description{
-function to (do something)
+function to make field plots. This is the primary function for this package. Produces a
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+# none
 }

@@ -13,7 +13,7 @@
 #' @param plotstart [value]. Default is FALSE
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 shiftPlot <- function(plots, plotNo, ang1, ang2 = ang1, offsetx = 0, offsety = 0, corner = "bottomright", plotref = FALSE, plotstart = FALSE){
 	ref <- getCoord(plots = plots, plotNo = plotNo, corner = corner)

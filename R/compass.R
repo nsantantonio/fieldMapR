@@ -12,7 +12,7 @@
 #' @param col [value]. Default is "black"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 compass <- function(x, y, angle, xsize = 0.5, ysize = 1, txtSize = 1, pointyness = 3, col = "black"){
 

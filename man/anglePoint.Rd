@@ -7,21 +7,22 @@
 anglePoint(d, theta, ref = c(0, 0))
 }
 \arguments{
-\item{d}{[value]}
+\item{d}{numeric. distance traveled}
 
-\item{theta}{[value]}
+\item{theta}{numeric. angle in degrees to move in.}
 
-\item{ref}{[value]. Default is c(0, 0)}
+\item{ref}{numeric.  Reference point to start at. length must be 2. Default is c(0, 0)}
 }
 \value{
-[value]
+numeric. point
 }
 \description{
-function to (do something)
+function to find new point given a reference point, an angle and a distance.
 }
 \details{
-[fill in details here]
+shift point by angle and distance.
 }
 \examples{
-none
+anglePoint(d = 1, theta = 0, ref = c(0,0))
+anglePoint(d = 2, theta = 90, ref = c(1,0))
 }

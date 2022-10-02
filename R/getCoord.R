@@ -7,7 +7,7 @@
 #' @param corner [value]. Default is "bottomright"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 getCoord <- function(plots, plotNo, corner = "bottomright"){
 	pos <- c(bottomleft = 1, bottomright = 2, topright = 3, topleft = 4)

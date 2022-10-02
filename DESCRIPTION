@@ -1,8 +1,13 @@
 Package: fieldMapR
 Version: 0.1
+Title: fieldMapR
+Description: Package to create experimental field maps used in plant breeding
 Author: Nicholas Santantonio <ns722@cornell.edu>
+Maintainer: Nicholas Santantonio <ns722@cornell.edu>
 Encoding: UTF-8
+License: GPL-3
 RoxygenNote: 6.1.1
+Imports: methods
 Collate: 
     'GPStoDist.R'
     'anglePoint.R'
@@ -21,7 +26,9 @@ Collate:
     'fieldBoundary.R'
     'fieldPlots.R'
     'fieldStakes.R'
+    'fixPlantingErrors.R'
     'flipInt.R'
+    'formatScabBlock.R'
     'getCenter.R'
     'getCoord.R'
     'getCorner.R'
@@ -32,8 +39,10 @@ Collate:
     'labelPasses.R'
     'labelRanges.R'
     'makeBlock.R'
+    'makeBreedbaseTrial.R'
     'makeFill.R'
     'makeHarvMasterFile.R'
+    'makeHeadrowBook.R'
     'makePlots.R'
     'makeTrialLabels.R'
     'matrixToDist.R'

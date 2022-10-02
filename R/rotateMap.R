@@ -6,7 +6,7 @@
 #' @param theta [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 rotateMap <- function(map, theta){
 	map@points <- rotate(map@points, theta)

@@ -6,5 +6,5 @@
 #'@slot block  character of block
 #'@slot long  data.frame of long
 #' @export harvestBags
-harvestBags <- setClass("harvestBags", slots = c(plotNo = "character", pass = "numeric", range = "numeric", trial = "character", block = "character", long = "data.frame"))
+harvestBags <- setClass("harvestBags", slots = c(Trial = "character", Line = "character", Entry = "integer", plotName = "character", plotNo = "character", pass = "numeric", range = "numeric", block = "character", long = "data.frame"))
 

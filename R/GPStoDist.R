@@ -3,11 +3,11 @@
 #' function to  make fieldBoundary from matrix of GPS points. Returns a flattened matrix in feet (default) or meters (when units argument set to 'm')
 #'
 #' @param boundary [value]
-#' @param units [value]. Default is "ft"
+#' @param units [value]. Output units. Default is "ft" for ft, other can b
 #' @param refPoint [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 GPStoDist <- function(boundary, units = "ft", refPoint = NULL){		
 	if(is.null(refPoint)) refPoint <- apply(boundary, 2, min)

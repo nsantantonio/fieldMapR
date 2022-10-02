@@ -5,7 +5,7 @@
 #' @param plots [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 getCenter <- function(plots){
 	colMeans(do.call(rbind, plots@centers))

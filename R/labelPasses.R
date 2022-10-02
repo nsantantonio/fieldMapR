@@ -8,7 +8,7 @@
 #' @param passDist [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 
 labelPasses <- function(blockList, startPt = c(0,0), lastPass = 0, passDist = 5, ...){

@@ -9,7 +9,7 @@
 #' @param blockName [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 
 printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName = NULL){
@@ -20,7 +20,7 @@ printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName =
 		if(is.null(blockName)) blockName <- "" 
 	} else if(class(plots) == "fieldBlock"){
 		m <- plots@plotNo
-		trial <- plots@trial
+		trial <- plots@Trial
 		if(is.null(blockName)) blockName <- plots@blockName 
 	} else {
 		stop("must provide an object of class 'fieldPlots' or 'fieldBlock")
@@ -50,9 +50,9 @@ printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName =
  	cpasses <- getPasses(passes)
  	cranges <- getPasses(ranges)
  	ctrial <- getPasses(trial)
- 	longdf <- data.frame(block = blockName, trial = ctrial, plot = cm, pass = cpasses, range = cranges)
+ 	longdf <- data.frame(block = blockName, Trial = ctrial, plot = cm, pass = cpasses, range = cranges)
  	isUniq <- !duplicated(longdf)
 
-	fieldStakes(plotNo = cm[isUniq], pass = cpasses[isUniq], range = cranges[isUniq], trial = ctrial[isUniq], block = blockName, long = longdf[isUniq,])
+	fieldStakes(plotNo = cm[isUniq], pass = cpasses[isUniq], range = cranges[isUniq], Trial = ctrial[isUniq], block = blockName, long = longdf[isUniq,])
 
 }

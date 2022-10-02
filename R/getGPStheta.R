@@ -8,7 +8,7 @@
 #' @param lon2 [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 getGPStheta <- function(lat1, lon1, lat2, lon2){
 	dy = lat2 - lat1

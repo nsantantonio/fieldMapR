@@ -1,36 +1,38 @@
 #' makePlots function
 #'
-#' function to (do something)
+#' function to make field plots. This is the primary function for this package. Produces a 
 #'
-#' @param trial [value]
-#' @param ranges [value]
-#' @param passes [value]
-#' @param rangeDist [value]
-#' @param passDist [value]
-#' @param rstart [value]. Default is 1
-#' @param pstart [value]. Default is 1
-#' @param angle [value]. Default is 0
-#' @param plotNo [value]. Default is 1000
-#' @param blockSize [value]. Default is ranges * passes
-#' @param nBlock [value]. Default is 1
-#' @param serpentine [value]. Default is TRUE
-#' @param startSerp [value]. Default is FALSE
-#' @param transpose [value]. Default is FALSE
-#' @param ref [value]. Default is c(0,0)
-#' @param border [value]. Default is 0
-#' @param borderName [value]. Default is "B"
-#' @param borderPlotNo [value]. Default is 1
-#' @param updateB [value]. Default is TRUE
-#' @param ignorePasses [value]. Default is NULL
-#' @param fieldViewMatrix [value]. Default is TRUE
-#' @param fill [value]. Default is FALSE
-#' @param fillBlock [value]. Default is FALSE
-#' @return [value]
+#' @param trial either an obect of class 'trialDesign' or a character vector of length 1 for the trial name. 
+#' @param ranges numeric. number of ranges (rows)
+#' @param passes numeric. number of passes (columns)
+#' @param rangeDist numeric. distance between ranges, on center. 
+#' @param passDist numeric. distance between passes, on center.
+#' @param rstart numeric. range to start plots on. Default is 1
+#' @param pstart numeric. pass to start plots on. Default is 1
+#' @param angle angle to . Default is 0
+#' @param plotNo value to use for plot numbers (series, either 100, 1000 etc). or the actual plot numbers desired (length of number of plots). Default is 1000
+#' @param blockSize numeric. Size of a block. Default is ranges * passes
+#' @param nBlock numeric. Number of blocks. If greater than one, the series will be updated once the block is filled. I.e. if block size is 120, and there are 240 plots, then teh first block will contain plots 1001:1120 and the second block will contain plots 2001:2120. Default is 1
+#' @param serpentine Should plot numbers be planted serpentine?. Default is TRUE
+#' @param startSerp Should plots start numbering serpentine? Useful when the user wants to change the normal direction at ranges greater than 1. Default is FALSE
+#' @param ref Reference point for all plots to start at. Typically this will be the bottom left point for teh first plot. Default is c(0,0)
+#' @param border numeric. How many passes should be borders? If length is 1 than both sides will have the same number of border passes. If length is 2, then first element specifies number of left border passes and second element specifies number of right border passes. Default is 0
+#' @param borderName character. What should borders be named. Default is "B"
+#' @param borderPlotNo integer. What number should be used to start counting border plots? Default is 1
+#' @param updateB logical.Shoud border numbers be updated? Default is TRUE
+#' @param ignorePasses numeric. Which passes should be ignored when plotting? Useful when the users wants to skip passes, example, when two trials are side by side in teh same block. Default is NULL
+#' @param fieldViewMatrix Should the matrix represent the field view? I.e. the first plots will be in the last rows of the matrix (i.e. the bottom). Default is TRUE
+#' @param fill logical. Should the remaining plots in eh range be filled with fill?  Default is FALSE
+#' @param fillBlock logical. Should the rest of the block be filled with fill? Default is FALSE
+#' @param Line character. Optional vector of line names. Default is NULL
+#' @param Pedigree character. Optional vector of line pedigrees. Default is NULL
+#' @param Entry integer. Optional vector of Entry numbers names. Default is NULL
+#' @return object of class 'fieldPlots'
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 # ranges = 20; passes = 30; rangeDist = 16; passDist = 5; rstart = 1; pstart = 1; angle = 0; plotNo = 1000; blockSize = ranges * passes; nBlock = 1; serpentine = TRUE; startSerp = FALSE; transpose = FALSE; ref = c(0,0); border = 0; borderName = "B"; borderPlotNo = 1; updateB = TRUE; ignorePasses = NULL; fieldViewMatrix = TRUE; fill = FALSE; fillBlock = FALSE; Line = NULL; Pedigree = NULL; Entry = NULL
-makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, transpose = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL){
+makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL){
 	if (class(trial) %in% "trialDesign"){
 		if(!all(order(trial@plotNo) == 1:length(trial@plotNo))){
 			stop("Plots out of order! Please order plots in acensding order!")
@@ -115,6 +117,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	# print(borderj)
 
 	plotNameij <- matrix(NA, ranges, passes)
+	fillij <- matrix(NA, ranges, passes)
+	entij <- matrix(NA, ranges, passes)
+	lineij <- matrix(NA, ranges, passes)
+	pedij <- matrix(NA, ranges, passes)
  
 	isfill <- FALSE
 	tooFar <- FALSE
@@ -122,6 +128,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	isLast <- if(sum(blockSize) > 0) FALSE else TRUE
 	printLast <- FALSE
 	blockSwitch <- TRUE
+	entryIndex <- 1
 
 	blockChange <- list()
 	plotCorners <- list()
@@ -187,6 +194,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 				plotCorners[[paste0(borderName, as.character(borderPlotNo))]] <- corners
 				plotCenters[[paste0(borderName, as.character(borderPlotNo))]] <- c(j + 0.5, i + 0.5) * pdim
 				plotNameij[i + 1, j + 1] <- paste0(borderName, borderPlotNo)
+				fillij[i + 1, j + 1] <- TRUE
 				borderPlotNo <- borderPlotNo + 1
 			} else {
 				if(isLast) printLast <- TRUE
@@ -194,6 +202,11 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 				plotCorners[[as.character(plotNo)]] <- corners
 				plotCenters[[as.character(plotNo)]] <- c(j + 0.5, i + 0.5) * pdim
 				plotNameij[i + 1, j + 1] <- as.character(plotNo) 
+				fillij[i + 1, j + 1] <- FALSE
+				entij[i + 1, j + 1] <- Entry[entryIndex]
+				lineij[i + 1, j + 1] <- Line[entryIndex]
+				pedij[i + 1, j + 1] <- Pedigree[entryIndex]
+				entryIndex <- entryIndex + 1
 
 				if (plotNoGiven) {
 					plotIndex <- plotIndex + 1
@@ -235,16 +248,24 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		names(plotCornersRot) <- names(plotCorners)
 		centersRot <- split(rotate(do.call(rbind, plotCenters), angle), 1:length(plotCenters))
 		names(centersRot) <- names(plotCenters)
-		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
+		# plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
+		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = entij, Line = lineij, Pedigree = pedij)
 	} else {
-		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
+		# plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
+		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = entij, Line = lineij, Pedigree = pedij)
 	}
 	if(any(ref != 0)){
 		plots@centers <- lapply(plots@centers, function(x) x + ref)
 		plots@corners <- lapply(plots@corners, function(x) sweep(x, 2, ref, "+"))
 	}
 
-	if(fieldViewMatrix) plots@matrix <- plots@matrix[nrow(plots@matrix):1, , drop = FALSE]
+	if(fieldViewMatrix) {
+		plots@matrix <- plots@matrix[nrow(plots@matrix):1, , drop = FALSE]
+		plots@fill <- plots@fill[nrow(plots@fill):1, , drop = FALSE]
+		plots@Entry <- plots@Entry[nrow(plots@Entry):1, , drop = FALSE]
+		plots@Line <- plots@Line[nrow(plots@Line):1, , drop = FALSE]
+		plots@Pedigree <- plots@Pedigree[nrow(plots@Pedigree):1, , drop = FALSE]
+	}
 	# plots <- c(plots, list(matrix = plotNameij))
 	if(is.null(borderj)) {
 		borderj <- NA

@@ -1,10 +1,10 @@
 #' radToDeg function
 #'
-#' function to (do something)
+#' function to convert radians to degrees.
 #'
-#' @param radToDeg <- function (rad [value]
+#' @param rad numeric. radians. [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 radToDeg <- function (rad) {rad * 180 / pi}

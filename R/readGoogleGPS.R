@@ -7,7 +7,7 @@
 #' @param ignore [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 readGoogleGPS <- function(googleCSV, ptOrder = NULL, ignore = NULL){
 	coord <- read.csv(googleCSV)

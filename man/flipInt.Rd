@@ -15,11 +15,11 @@ flipInt(x, maxx = NULL)
 [value]
 }
 \description{
-function to (do something)
+function to flip integers. 5:10 becomes 10:5.
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+# none
 }

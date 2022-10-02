@@ -10,7 +10,7 @@
 #' @param corner2 [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 calcDistFromPlots <- function(plots1, plotNo1, corner1, plots2, plotNo2, corner2, ...){
 

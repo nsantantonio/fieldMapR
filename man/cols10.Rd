@@ -15,6 +15,6 @@ color palettes
 various color palettes
 }
 \examples{
-none
+# none
 }
 \keyword{datasets}

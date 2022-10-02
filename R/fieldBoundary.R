@@ -9,8 +9,8 @@
 fieldBoundary <- setClass("fieldBoundary", slots = c(points = "matrix", angle = "numeric", distance = "numeric", reference = "numeric"))
 
 #' @export 
-length.fieldBoundary <- function(fb){
-	nrow(fb@points)
+length.fieldBoundary <- function(x){
+	nrow(x@points)
 }
 
 #' @export 

@@ -9,7 +9,7 @@ GPStoDist(boundary, units = "ft", refPoint = NULL)
 \arguments{
 \item{boundary}{[value]}
 
-\item{units}{[value]. Default is "ft"}
+\item{units}{[value]. Output units. Default is "ft" for ft, other can b}
 
 \item{refPoint}{[value]. Default is NULL}
 }
@@ -23,5 +23,5 @@ function to  make fieldBoundary from matrix of GPS points. Returns a flattened m
 [fill in details here]
 }
 \examples{
-none
+# none
 }

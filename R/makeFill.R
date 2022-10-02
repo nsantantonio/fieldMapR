@@ -4,7 +4,7 @@
 #' @param .... Arguments passes to makePlots
 #' @return object of class fieldPLots
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 makeFill <- function(n, ...){
 	l <- list(...)
@@ -22,7 +22,7 @@ makeFill <- function(n, ...){
 	def <- list(plotNo = fillPlots, borderPlotNo = B, updateB = FALSE)
 	l <- c(def, l[!names(l) %in% def])
 	fill <- do.call(makePlots, l)
-
+	fill@fill[!is.na(fill@fill)] <- TRUE
 	return(fill)
 }
 

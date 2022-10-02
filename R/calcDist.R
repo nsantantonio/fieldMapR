@@ -1,17 +1,17 @@
 #' calcDist function
 #'
-#' function to (do something)
+#' function to plot the interval between two points on the field map and display the distance between them. 
 #'
-#' @param pt1 [value]
-#' @param pt2 [value]
-#' @param offset [value]. Default is c(5, 10)
-#' @param arlen [value]. Default is 0.10
-#' @param printDist [value]. Default is TRUE
-#' @param units [value]. Default is "ft"
-#' @param digits [value]. Default is 0
+#' @param pt1 numeric. point 1, must be length 2.
+#' @param pt2 numeric. point 2, must be length 2.
+#' @param offset numeric. Offset to display calculated value. Default is c(5, 10)
+#' @param arlen numeric. length of tick marks. Default is 0.10
+#' @param printDist logical. Should the distance be printed on the map? Default is TRUE
+#' @param units character. units used for measurment. Not functional only displayed as units on printed value. Default is "ft"
+#' @param digits integer. number of digits to display in printed distance value. Default is 0
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE, units = "ft", digits = NULL){
 	if(length(pt1) == 0) stop("Please provide a valid plot number for point 1")

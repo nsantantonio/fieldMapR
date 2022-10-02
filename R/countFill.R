@@ -6,7 +6,7 @@
 #' @param fill [value]. Default is "fill"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 countFill <- function(l, fill = "fill"){
 	if(all(sapply(l, is.list))) l <- lapply(l, "[[", "long")

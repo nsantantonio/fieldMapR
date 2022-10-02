@@ -7,17 +7,17 @@
 radToDeg(rad)
 }
 \arguments{
-\item{radToDeg}{<- function (rad [value]}
+\item{rad}{numeric. radians. [value]}
 }
 \value{
 [value]
 }
 \description{
-function to (do something)
+function to convert radians to degrees.
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+# none
 }

@@ -6,7 +6,7 @@
 #' @param a2 [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 meanAngle <- function(a1, a2){
 	if(a1 < 0) a1 <- a1 + 360

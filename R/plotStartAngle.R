@@ -13,7 +13,7 @@
 #' @param units [value]. Default is "ft"
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 plotStartAngle <- function(startPt, pt1, pt2, refAngle1, refAngle2, rscale = 0.7, offset = 4, txtSize = 1, units = "ft"){
 

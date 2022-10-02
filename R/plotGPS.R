@@ -7,7 +7,7 @@
 #' @param a [value]. Default is 0
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 plotGPS <- function(gps, number = TRUE, a = 0){
 	if (a != 0) {

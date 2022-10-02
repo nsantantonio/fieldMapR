@@ -2,15 +2,15 @@
 #'
 #' function to (do something)
 #'
-#' @param  [value]
+#' @param  sname [value]. 
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
-combineMat <- function(...) {
+combineMat <- function(..., sname = "matrix") {
 	l <- list(...)
 	if(!all(sapply(l, class) == "fieldPlots")) stop("only objects of class 'fieldPlots' are allowed!")
-	matL <- lapply(l, slot, "matrix")
+	matL <- lapply(l, slot, sname)
 	if(length(unique(lapply(matL, dim))) > 1) stop("all fieldPlots must have the same sized matrix!")
 	
 	plotNos <- matrix(NA, nrow(matL[[1]]), ncol(matL[[1]]))

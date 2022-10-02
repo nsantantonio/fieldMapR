@@ -6,7 +6,7 @@
 #' @slot borderPasses  numeric of borderPasses
 #' @slot blockName  character of blockName
 #' @export fieldBlock
-fieldBlock <- setClass("fieldBlock", slots = c(trial = "matrix", plotNo = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
+fieldBlock <- setClass("fieldBlock", slots = c(Trial = "matrix", Line = "matrix", Entry = "matrix", plotName = "matrix", fill = "matrix", plotNo = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
 
 # #' @export 
 # length.fieldBlock <- function(fb){
@@ -15,21 +15,21 @@ fieldBlock <- setClass("fieldBlock", slots = c(trial = "matrix", plotNo = "matri
 
 
 #' @export
-length.fieldBlock <- function(fb){
-	sum(!is.na(fb@plotNo))
+length.fieldBlock <- function(x){
+	sum(!is.na(x@plotNo))
 }
 
 #' @export
-dim.fieldBlock <- function(fb){
-	dim(fb@plotNo)
+dim.fieldBlock <- function(x){
+	dim(x@plotNo)
 }
 
 #' @export
-nrow.fieldBlock <- function(fb){
-	nrow(fb@plotNo)
+nrow.fieldBlock <- function(x){
+	nrow(x@plotNo)
 }
 
 #' @export
-ncol.fieldBlock <- function(fb){
-	ncol(fb@plotNo)
+ncol.fieldBlock <- function(x){
+	ncol(x@plotNo)
 }

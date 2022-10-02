@@ -2,10 +2,11 @@
 #'
 #' function to (do something)
 #'
-#' @param takeoutFile path to google takeout csv file.
+#' @param takeoutFile character. path to google takeout csv file.
+#' @param rowOrder numeric. order of points. 
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 takeout <- function(takeoutFile, rowOrder = NULL, ...){
 	coord <- read.csv(takeoutFile, ...)

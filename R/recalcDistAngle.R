@@ -5,7 +5,7 @@
 #' @param boundry [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 recalcDistAngle <- function(boundry){
 	pts <- if(is.list(boundry)) boundry$points else pts <- boundry

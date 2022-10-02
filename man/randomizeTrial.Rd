@@ -5,10 +5,12 @@
 \title{randomizeTrial function}
 \usage{
 randomizeTrial(ent, test, year, loc, reps, grams, randomize = "RCBD",
-  otherCols = NULL)
+  entryGrams = NULL, otherCols = NULL)
 }
 \arguments{
 \item{ent}{[value]}
+
+\item{test}{[value]}
 
 \item{year}{[value]}
 
@@ -20,7 +22,9 @@ randomizeTrial(ent, test, year, loc, reps, grams, randomize = "RCBD",
 
 \item{randomize}{[value]. Default is 'RCBD'}
 
-\item{testName}{[value]}
+\item{entryGrams}{[value]. Default is NULL}
+
+\item{otherCols}{[value]. Default is NULL}
 }
 \value{
 [value] object of class fieldTrial
@@ -32,5 +36,5 @@ function to randomize trials
 [fill in details here]
 }
 \examples{
-none
+# none
 }

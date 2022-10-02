@@ -4,14 +4,19 @@
 \alias{printBags}
 \title{printBags function}
 \usage{
-printBags(plots, addPass = 0, countBorder = TRUE, blockName = NULL)
+printBags(plots, addPass = 0, countBorder = TRUE, blockName = NULL,
+  printBorder = FALSE)
 }
 \arguments{
 \item{plots}{[value]}
 
-\item{addPass}{[value]. Default is 0}
+\item{addPass}{numeric. number of passes to add. Default is 0}
 
-\item{blockName}{[value]. Default is NULL}
+\item{countBorder}{logical. Should the border passes be counted? Default is TRUE}
+
+\item{blockName}{chracter. name of block. Default is NULL}
+
+\item{printBorder}{logical. Should bags for the border passes be printed? Default is FALSE}
 }
 \value{
 [value]
@@ -23,5 +28,5 @@ function to (do something)
 [fill in details here]
 }
 \examples{
-none
+# none
 }

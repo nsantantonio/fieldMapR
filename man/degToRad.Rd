@@ -7,17 +7,17 @@
 degToRad(deg)
 }
 \arguments{
-\item{degToRad}{<- function (deg [value]}
+\item{deg}{numeric. degrees.}
 }
 \value{
-[value]
+numeric. radians
 }
 \description{
-function to (do something)
+function to convert degrees to radians
 }
 \details{
-[fill in details here]
+convert degrees to radians
 }
 \examples{
-none
+degToRad(45) == pi / 4
 }

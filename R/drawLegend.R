@@ -1,16 +1,17 @@
 #' drawLegend function
 #'
-#' function to (do something)
+#' function to draw legend for field map.
 #'
 #' @param plotList [value]
 #' @param boundry [value]
 #' @param shiftLeg [value]
 #' @param cols [value]
+#' @param labNames [value]
 #' @param scaleLeg [value]. Default is 0.33
 #' @param rotateLabs [value]. Default is 0
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 drawLegend <- function(plotList, boundry, cols, shiftLeg = c(0,0), labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, ...){
 	if(is.null(labNames)) labNames <- sapply(plotList, function(x) x@trialName)

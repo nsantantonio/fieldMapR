@@ -6,7 +6,7 @@
 #' @param pile [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 combinePlots <- function(..., trialName = NULL, pile = NULL){
 	l <- list(...)

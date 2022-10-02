@@ -16,6 +16,8 @@ drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
 
 \item{shiftLeg}{[value]}
 
+\item{labNames}{[value]}
+
 \item{scaleLeg}{[value]. Default is 0.33}
 
 \item{rotateLabs}{[value]. Default is 0}
@@ -24,11 +26,11 @@ drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
 [value]
 }
 \description{
-function to (do something)
+function to draw legend for field map.
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+# none
 }

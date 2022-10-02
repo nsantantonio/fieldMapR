@@ -9,7 +9,7 @@
 #' @param blockName [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 writeStakes <- function(..., dir = "", addPass = 0, every = 5, tooClose = 2, blockName = NULL){
 	lclass <- lapply(list(...), class)

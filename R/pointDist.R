@@ -6,7 +6,7 @@
 #' @param pt2 [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 pointDist <- function(pt1, pt2){
 	distance <- dist(rbind(pt1, pt2))

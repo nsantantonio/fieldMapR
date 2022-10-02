@@ -6,7 +6,7 @@
 #' @param dir [value]. Default is ""
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 
 

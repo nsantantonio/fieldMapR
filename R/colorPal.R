@@ -1,7 +1,7 @@
 #' color palettes
 #'
 #' @details various color palettes 
-#' @examples none
+#' @examples # none
 #' @export
 cols10 <- c("#5ba2d6",
 "#cc5d38",

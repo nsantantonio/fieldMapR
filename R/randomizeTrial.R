@@ -3,15 +3,17 @@
 #' function to randomize trials
 #'
 #' @param ent [value]
-#' @param testName [value]
+#' @param test [value]
 #' @param year [value]
 #' @param loc [value]
 #' @param reps [value]
 #' @param grams [value]
 #' @param randomize [value]. Default is 'RCBD'
+#' @param entryGrams [value]. Default is NULL
+#' @param otherCols [value]. Default is NULL
 #' @return [value] object of class fieldTrial
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 
 # need to fix, sometimes doesnt equally proportion blocks. I dont know why...
@@ -20,16 +22,27 @@
 # ent = entry; testName = "SRWPrelim"; year = 2022; loc = c("BLAVA", "WARVA", "PNTVA"); reps = 2; grams = 75
 # reps <- c(3, 2, 1)
 # reps <- rep(3, nrow(ent)); reps[ent$Notes == "Year2"] <- 2; reps[ent$Notes == "Year1"] <- 1
-randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', otherCols = NULL){
+randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', entryGrams = NULL, otherCols = NULL){
+	# ent = entry; test = test; year = year; grams = locs$grams; loc = locs$Location; reps = reps;  entryGrams = entryGrams; randomize = design
 	ent$Test <- test
 	ent$Year <- year
 	if(length(grams) == 1){
 		grams <- rep(grams, length(loc))
-	}
+	} 
 	names(grams) <- loc
+	
+	if(!is.null(entryGrams)){
+		gramsByEnt <- TRUE
+	} else {
+		gramsByEnt <- FALSE
+	}
+	locEntGrams  <- loc[is.na(grams)]
+	
 	# ent$grams <- grams
-	if(is.null(ent$src_type)) ent$src_type <- NA
-	if(is.null(ent$src_num)) ent$src_num <- NA
+	# if(is.null(ent$src_type)) ent$src_type <- NA
+	# if(is.null(ent$src_num)) ent$src_num <- NA
+	if(is.null(ent$source)) ent$source <- NA
+
 
 	nEnt <- nrow(ent)
 	if(nEnt < 100) series <- 100 else if(nEnt < 1000) series <- 1000 else series <- 10000
@@ -38,13 +51,14 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 	if(all(reps == 1)){
 		for(i in loc){
 			if(randomize %in% c("NO", "No", "no")){
-				enti <- ent
+				rEnt <- 1:nrow(ent)
 			} else {
-				enti <- ent[sample(1:nrow(ent)),]				
+				rEnt <- sample(1:nrow(ent))
 			}
+			enti <- ent[entSample,]				
 			enti$Plot <- 1:nrow(enti)
 			enti$Block <- 1
-			enti$grams <- grams[i]
+			if(i %in% locEntGrams & gramsByEnt) enti$grams <- entryGrams[rEnt] else enti$grams <- grams[i]
 			locReps[[i]] <- enti
 		}
 	} else if (randomize == "RCBD"){	
@@ -64,7 +78,8 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 				entij <- ent[rEnt, ]
 				entij$Plot <- {series * j + 1}:{series * j + nEnt}
 				entij$Block <- j
-				entij$grams <- grams[i]
+				# entij$grams <- grams[i]
+				if(i %in% locEntGrams & gramsByEnt) entij$grams <- entryGrams[rEnt] else entij$grams <- grams[i]
 				locReps[[i]][[j]] <- entij
 			}
 			if(length(locReps[[i]]) > 1) locReps[[i]] <- do.call(rbind, locReps[[i]]) else locReps[[i]] <- locReps[[i]][[1]]
@@ -137,7 +152,9 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 				entij <- ent[rEnt, ]
 				entij$Plot <- {series * j + 1}:{series * j + nrow(entij)}
 				entij$Block <- j
-				entij$grams <- grams[i]
+				# entij$grams <- grams[i]
+				# Not 100% sure this will work!
+				if(i %in% locEntGrams & gramsByEnt) entij$grams <- entryGrams[rEnt] else entij$grams <- grams[i]
 				locReps[[i]][[j]] <- entij
 			}
 			if(length(locReps[[i]]) > 1) locReps[[i]] <- do.call(rbind, locReps[[i]]) else locReps[[i]] <- locReps[[i]][[1]]			
@@ -147,7 +164,8 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 	trialPlots$Location <- rep(loc, times = sapply(locReps, nrow))
 	trialPlots$Trial <- paste(trialPlots$Test, trialPlots$Year, trialPlots$Location, sep = "_")
 	trialPlots$plot_name <- paste(trialPlots$Trial, trialPlots$Plot, sep = "_")
-	keepCols <- c("Test", "Year", "Location", "Trial", "Entry", "Line", "Block", "Plot", "plot_name", "grams", "Pedigree", "src_num", "src_type", otherCols)
+	# keepCols <- c("Test", "Year", "Location", "Trial", "Entry", "Line", "Block", "Plot", "plot_name", "grams", "Pedigree", "src_num", "src_type", otherCols)
+	keepCols <- c("Test", "Year", "Location", "Trial", "Entry", "Line", "Block", "Plot", "plot_name", "grams", "Pedigree", "source", otherCols)
 	
 	if(any(!keepCols %in% names(trialPlots))){
 		message("The following expected columns are not in the entry file:\n")

@@ -8,7 +8,7 @@
 #' @param rangeDist [value]. Default is NULL
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 
 labelRanges <- function(blockList, startPt = c(0,0), lastRange = 0, rangeDist = 16, ...){

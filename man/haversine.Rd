@@ -7,27 +7,27 @@
 haversine(lat1, lon1, lat2, lon2, r = 6371, units = "km")
 }
 \arguments{
-\item{lat1}{[value]}
+\item{lat1}{numeric. latitude point 1.}
 
-\item{lon1}{[value]}
+\item{lon1}{numeric. longitude point 1.}
 
-\item{lat2}{[value]}
+\item{lat2}{numeric. latitude point 2.}
 
-\item{lon2}{[value]}
+\item{lon2}{numeric. longitude point 2.}
 
 \item{r}{[value]. Default is 6371}
 
-\item{units}{[value]. Default is "km"}
+\item{units}{units to return. values can be 'km' for kilometers, 'm' for meters, 'mi' for miles, or 'ft' for feet. Default is "km"}
 }
 \value{
 [value]
 }
 \description{
-function to (do something)
+function to compute haversine distance based on two GPS coordinates.
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+haversine(32.301087, -106.747767, 42.381671, -76.382452) # distance traveled from one grad school to another, in km
 }

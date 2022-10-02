@@ -4,8 +4,8 @@
 trialDesign <- setClass("trialDesign", slots = c(plotNo = "integer", plotName = "character", block = "integer", trialName = "character", Entry = 'integer', Line = "character", Pedigree = "character", plotInfo = "data.frame"))
 
 #' @export 
-length.trialDesign <- function(td){
-	length(td@plotNo)
+length.trialDesign <- function(x){
+	length(x@plotNo)
 }
 
 #' @export 

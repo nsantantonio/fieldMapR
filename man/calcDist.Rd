@@ -8,29 +8,29 @@ calcDist(pt1, pt2, offset = c(5, 10), arlen = 0.1, printDist = TRUE,
   units = "ft", digits = NULL)
 }
 \arguments{
-\item{pt1}{[value]}
+\item{pt1}{numeric. point 1, must be length 2.}
 
-\item{pt2}{[value]}
+\item{pt2}{numeric. point 2, must be length 2.}
 
-\item{offset}{[value]. Default is c(5, 10)}
+\item{offset}{numeric. Offset to display calculated value. Default is c(5, 10)}
 
-\item{arlen}{[value]. Default is 0.10}
+\item{arlen}{numeric. length of tick marks. Default is 0.10}
 
-\item{printDist}{[value]. Default is TRUE}
+\item{printDist}{logical. Should the distance be printed on the map? Default is TRUE}
 
-\item{units}{[value]. Default is "ft"}
+\item{units}{character. units used for measurment. Not functional only displayed as units on printed value. Default is "ft"}
 
-\item{digits}{[value]. Default is 0}
+\item{digits}{integer. number of digits to display in printed distance value. Default is 0}
 }
 \value{
 [value]
 }
 \description{
-function to (do something)
+function to plot the interval between two points on the field map and display the distance between them.
 }
 \details{
 [fill in details here]
 }
 \examples{
-none
+# none
 }

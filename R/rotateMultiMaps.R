@@ -6,7 +6,7 @@
 #' @param a [value]
 #' @return [value]
 #' @details [fill in details here]
-#' @examples none
+#' @examples # none
 #' @export
 rotateMultiMaps <- function(l, a){
 	newL <- list()

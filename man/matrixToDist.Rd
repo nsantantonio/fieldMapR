@@ -8,6 +8,8 @@ matrixToDist(m, reference = NULL)
 }
 \arguments{
 \item{m}{n x 2 matrix of points on boundary of field. the first row will be assumed to be the reference point if no argument is provided to 'reference'}
+
+\item{reference}{reference point. If NULL, reference is assumed to be first row in m}
 }
 \value{
 object of class field boundary
@@ -19,5 +21,5 @@ function to make fieldBoundary from matrix of points.
 [fill in details here]
 }
 \examples{
-none
+# none
 }

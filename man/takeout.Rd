@@ -7,7 +7,9 @@
 takeout(takeoutFile, rowOrder = NULL, ...)
 }
 \arguments{
-\item{takeoutFile}{path to google takeout csv file.}
+\item{takeoutFile}{character. path to google takeout csv file.}
+
+\item{rowOrder}{numeric. order of points.}
 }
 \value{
 [value]
@@ -19,5 +21,5 @@ function to (do something)
 [fill in details here]
 }
 \examples{
-none
+# none
 }
