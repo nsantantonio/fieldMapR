@@ -18,6 +18,8 @@ calcDistFromPlots(plots1, plotNo1, corner1, plots2, plotNo2, corner2, ...)
 \item{plotNo2}{[value]}
 
 \item{corner2}{[value]}
+
+\item{...}{additional arguments passed to calcDist()}
 }
 \value{
 [value]

@@ -8,6 +8,7 @@
 #' @param plots2 [value]
 #' @param plotNo2 [value]
 #' @param corner2 [value]
+#' @param ... additional arguments passed to calcDist()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

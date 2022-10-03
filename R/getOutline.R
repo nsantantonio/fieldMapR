@@ -6,6 +6,7 @@
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none
+#' @importFrom grDevices chull
 #' @export
 getOutline <- function(plots){
 	# corners <- plots@corners[!grepl("^[A-z]", names(plots@corners))]

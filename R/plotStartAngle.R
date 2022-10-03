@@ -2,6 +2,7 @@
 #'
 #' function to (do something)
 #'
+#' @param refCorner reference corner.
 #' @param startPt [value]
 #' @param pt1 [value]
 #' @param pt2 [value]
@@ -15,7 +16,7 @@
 #' @details [fill in details here]
 #' @examples # none
 #' @export
-plotStartAngle <- function(startPt, pt1, pt2, refAngle1, refAngle2, rscale = 0.7, offset = 4, txtSize = 1, units = "ft"){
+plotStartAngle <- function(startPt, pt1, pt2, refAngle1, refAngle2, refCorner, rscale = 0.7, offset = 4, txtSize = 1, units = "ft"){
 
 	circ <- pointDist(refCorner, startPt)
 

@@ -10,6 +10,8 @@ writeHarvMasterFile(block, dir, ...)
 \item{block}{[value]. object of class 'fieldBlock'}
 
 \item{dir}{[value]. Default is ""}
+
+\item{...}{additional arguments passed to write.csv()}
 }
 \value{
 [value]

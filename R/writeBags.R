@@ -2,6 +2,7 @@
 #'
 #' function to (do something)
 #'
+#' @param ... objects of class fieldPlots or fieldBlocks to create bag files.
 #' @param dir [value]. Default is ""
 #' @param addPass [value]. Default is 0
 #' @param countBorder logical. SHould the border be counted? Default is TRUE
@@ -9,6 +10,7 @@
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none
+#' @importFrom utils read.csv tail write.csv
 #' @export
 writeBags <- function(..., dir = "", addPass = 0, countBorder = TRUE, blockName = NULL){
 	# if(!all(lapply(list(...), class) == "harvestBags")) stop("Arguments must be of class 'harvestBags'")

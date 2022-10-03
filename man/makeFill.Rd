@@ -10,7 +10,7 @@ makeFill(n, ...)
 \arguments{
 \item{n}{integer vector to determine number of fill plots}
 
-\item{....}{Arguments passes to makePlots}
+\item{...}{Arguments passed to makePlots}
 }
 \value{
 object of class fieldPLots

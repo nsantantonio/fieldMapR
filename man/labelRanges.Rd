@@ -15,6 +15,8 @@ labelRanges(blockList, startPt = c(0, 0), lastRange = 0,
 \item{lastRange}{[value]. Default is NULL}
 
 \item{rangeDist}{[value]. Default is NULL}
+
+\item{...}{additional arguments passed to text()}
 }
 \value{
 [value]

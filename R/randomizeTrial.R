@@ -55,7 +55,7 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 			} else {
 				rEnt <- sample(1:nrow(ent))
 			}
-			enti <- ent[entSample,]				
+			enti <- ent[rEnt,]				
 			enti$Plot <- 1:nrow(enti)
 			enti$Block <- 1
 			if(i %in% locEntGrams & gramsByEnt) enti$grams <- entryGrams[rEnt] else enti$grams <- grams[i]

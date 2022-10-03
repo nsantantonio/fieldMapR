@@ -1,6 +1,5 @@
-#' color palettes
-#'
-#' @details various color palettes 
+#' color pallete'10
+#' @details color palette 10
 #' @examples # none
 #' @export
 cols10 <- c("#5ba2d6",
@@ -14,6 +13,8 @@ cols10 <- c("#5ba2d6",
 "#c57bb6",
 "#bc5f6a")
 
+#' color pallete'12 
+#' @details color palette 12 
 #' @export
 cols12 <- c("#4bafd0",
 "#d35238",
@@ -28,6 +29,8 @@ cols12 <- c("#4bafd0",
 "#c17d41",
 "#bd5f67")
 
+#' color pallete'16
+#' @details color palette 16
 #' @export
 cols16 <- c("#b659c4",
 "#5cb545",
@@ -46,7 +49,8 @@ cols16 <- c("#b659c4",
 "#38845a",
 "#976c32")
 
-
+#' color pallete'20
+#' @details color palette 20
 #' @export
 cols20 <- c("#58c39b",
 "#c756bf",
@@ -69,6 +73,8 @@ cols20 <- c("#58c39b",
 "#d0726a",
 "#92662c")
 
+#' color pallete'30
+#' @details color palette 30
 #' @export
 cols30 <- c(
 "#cbac3d",
@@ -103,7 +109,8 @@ cols30 <- c(
 "#c4ac6d",
 "#966832")
 
-
+#' color pallete'32
+#' @details color palette 32
 #' @export
 cols32 <- c("#a15057",
 "#64c34e",
@@ -138,6 +145,8 @@ cols32 <- c("#a15057",
 "#e1827a",
 "#8f652e")
 
+#' color pallete'40
+#' @details color palette 40
 #' @export
 cols40 <- c("#dd785a",
 "#5d75e3",

@@ -1,7 +1,7 @@
 #' makePlots function
 #' function to make fill plots. Wrapper for makePlots where all plots are fill.
 #' @param n integer vector to determine number of fill plots
-#' @param .... Arguments passes to makePlots
+#' @param ... Arguments passed to makePlots
 #' @return object of class fieldPLots
 #' @details [fill in details here]
 #' @examples # none

@@ -4,6 +4,7 @@
 #'
 #' @param block [value]. object of class 'fieldBlock'
 #' @param dir [value]. Default is ""
+#' @param ... additional arguments passed to write.csv()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

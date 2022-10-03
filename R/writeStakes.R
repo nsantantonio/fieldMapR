@@ -2,6 +2,7 @@
 #'
 #' function to (do something)
 #'
+#' @param ... objects of class 'fieldPlots' or 'fieldBlock' to write stake files for.
 #' @param dir [value]. Default is ""
 #' @param addPass [value]. Default is 0
 #' @param every [value]. Default is 5

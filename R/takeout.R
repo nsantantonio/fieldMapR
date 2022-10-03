@@ -4,6 +4,7 @@
 #'
 #' @param takeoutFile character. path to google takeout csv file.
 #' @param rowOrder numeric. order of points. 
+#' @param ... arguments passed to read.csv()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

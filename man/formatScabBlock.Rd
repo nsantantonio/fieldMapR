@@ -11,9 +11,11 @@ formatScabBlock(block, trays, trim = NULL, flip = 1, ...)
 
 \item{trays}{data.frame with scab entries per tray.}
 
-\item{trim}{}
+\item{trim}{numeric. Which ranges should be trimmed off of trays, typically the front (1) and last (20) ranges are planted in another species as border, so they need to be removed to format the scab block correctly.}
 
 \item{flip}{default is 1}
+
+\item{...}{additional arguments passed to makeTwoListMat()}
 }
 \value{
 data.frame formated breedbase multi trial upload file

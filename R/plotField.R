@@ -10,6 +10,7 @@
 #' @param showBoundry [value]. Default is TRUE
 #' @param showPtNo [value]. Default is FALSE
 #' @param sideLength [value]. Default is TRUE
+#' @param ... arguments passed to text()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

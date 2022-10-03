@@ -6,6 +6,7 @@
 #' @slot needStake  list of needStake
 #' @slot borderPasses  numeric of borderPasses
 #' @slot trialName  character of trialName
+#' @importFrom methods new slot slot<- slotNames
 #' @export fieldPlots
 fieldPlots <- setClass("fieldPlots", slots = c(centers = "list", corners = "list", matrix = "matrix", fill = "matrix", needStake = "list", borderPasses = "numeric", trialName = "character", Entry = "matrix", Line = "matrix", Pedigree = "matrix"))
 

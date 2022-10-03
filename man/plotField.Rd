@@ -24,6 +24,8 @@ plotField(boundary, offset = 5, units = "ft", hshift = 3,
 \item{showPtNo}{[value]. Default is FALSE}
 
 \item{sideLength}{[value]. Default is TRUE}
+
+\item{...}{arguments passed to text()}
 }
 \value{
 [value]

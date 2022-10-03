@@ -2,6 +2,7 @@
 #'
 #' function to (do something)
 #'
+#' @param ... objects of class 'fieldPlots' to be combined. 
 #' @param trialName [value]. Default is NULL
 #' @param pile [value]. Default is NULL
 #' @return [value]

@@ -8,6 +8,8 @@ writeBags(..., dir = "", addPass = 0, countBorder = TRUE,
   blockName = NULL)
 }
 \arguments{
+\item{...}{objects of class fieldPlots or fieldBlocks to create bag files.}
+
 \item{dir}{[value]. Default is ""}
 
 \item{addPass}{[value]. Default is 0}

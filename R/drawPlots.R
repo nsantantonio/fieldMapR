@@ -11,9 +11,11 @@
 #' @param rtrim [value]. Default is 2
 #' @param color [value]. Default is NA
 #' @param showBorderNum [value]. Default is FALSE
+#' @param ... arguments passed to text()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none
+#' @importFrom graphics arrows lines plot points polygon segments text
 #' @export
 drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
 	# plots = breederSeed; rtrim = c(0, 15); angle = hrAng; labAngle = hrAng - 90; color = c(colsAlpha[trialColors["breederSeed"]], "gray"); cex = plotCex; plotNos = showBno; showBorderNum = TRUE; ptrim = 1; rtrim = 2; add = TRUE;

@@ -10,6 +10,8 @@ takeout(takeoutFile, rowOrder = NULL, ...)
 \item{takeoutFile}{character. path to google takeout csv file.}
 
 \item{rowOrder}{numeric. order of points.}
+
+\item{...}{arguments passed to read.csv()}
 }
 \value{
 [value]

@@ -25,6 +25,8 @@ makeTrialLabels(labPos, shiftLab, labNames, cols, a = 0, labh = 8,
 \item{rotateLabs}{[value]. Default is 0}
 
 \item{labPlots}{[value]. Default is TRUE}
+
+\item{...}{additional arguments passed to text()}
 }
 \value{
 [value]

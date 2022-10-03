@@ -4,8 +4,9 @@
 #'
 #' @param block object of class fieldBlock
 #' @param trays data.frame with scab entries per tray.
-#' @param trim 
+#' @param trim numeric. Which ranges should be trimmed off of trays, typically the front (1) and last (20) ranges are planted in another species as border, so they need to be removed to format the scab block correctly.
 #' @param flip default is 1
+#' @param ... additional arguments passed to makeTwoListMat()
 #' @return data.frame formated breedbase multi trial upload file
 #' @details reformats blocks for the scab nursery
 #' @examples # none.

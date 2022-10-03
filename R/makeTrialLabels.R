@@ -11,6 +11,7 @@
 #' @param labw [value]. Default is 60
 #' @param rotateLabs [value]. Default is 0
 #' @param labPlots [value]. Default is TRUE
+#' @param ... additional arguments passed to text()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

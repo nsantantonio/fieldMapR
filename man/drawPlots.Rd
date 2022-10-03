@@ -25,6 +25,8 @@ drawPlots(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE,
 \item{color}{[value]. Default is NA}
 
 \item{showBorderNum}{[value]. Default is FALSE}
+
+\item{...}{arguments passed to text()}
 }
 \value{
 [value]

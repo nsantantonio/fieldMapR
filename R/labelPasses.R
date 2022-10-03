@@ -6,6 +6,7 @@
 #' @param startPt [value]. Default is "ft"
 #' @param lastPass [value]. Default is NULL
 #' @param passDist [value]. Default is NULL
+#' @param ... additional arguments passed to text()
 #' @return [value]
 #' @details [fill in details here]
 #' @examples # none

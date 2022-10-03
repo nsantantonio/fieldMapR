@@ -7,6 +7,8 @@
 combineMat(..., sname = "matrix")
 }
 \arguments{
+\item{...}{arguments passed as a list to combineMat, typically this is multiple objects of class 'fieldPlots'.}
+
 \item{sname}{[value].}
 }
 \value{

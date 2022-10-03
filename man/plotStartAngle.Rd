@@ -4,8 +4,8 @@
 \alias{plotStartAngle}
 \title{plotStartAngle function}
 \usage{
-plotStartAngle(startPt, pt1, pt2, refAngle1, refAngle2, rscale = 0.7,
-  offset = 4, txtSize = 1, units = "ft")
+plotStartAngle(startPt, pt1, pt2, refAngle1, refAngle2, refCorner,
+  rscale = 0.7, offset = 4, txtSize = 1, units = "ft")
 }
 \arguments{
 \item{startPt}{[value]}
@@ -17,6 +17,8 @@ plotStartAngle(startPt, pt1, pt2, refAngle1, refAngle2, rscale = 0.7,
 \item{refAngle1}{[value]}
 
 \item{refAngle2}{[value]}
+
+\item{refCorner}{reference corner.}
 
 \item{rscale}{[value]. Default is 0.7}
 

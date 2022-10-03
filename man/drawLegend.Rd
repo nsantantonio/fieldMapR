@@ -5,7 +5,7 @@
 \title{drawLegend function}
 \usage{
 drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
-  labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, ...)
+  labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, a = 0, ...)
 }
 \arguments{
 \item{plotList}{[value]}
@@ -20,7 +20,11 @@ drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
 
 \item{scaleLeg}{[value]. Default is 0.33}
 
-\item{rotateLabs}{[value]. Default is 0}
+\item{rotateLabs}{angle to be used for rotating the labels. Default is 0}
+
+\item{a}{numeric. Angle to be used for drawing the legend. Default is 0}
+
+\item{...}{additional arguments passed to text()}
 }
 \value{
 [value]

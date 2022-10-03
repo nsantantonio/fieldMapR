@@ -3,16 +3,16 @@
 \docType{data}
 \name{cols10}
 \alias{cols10}
-\title{color palettes}
+\title{color pallete'10}
 \format{An object of class \code{character} of length 10.}
 \usage{
 cols10
 }
 \description{
-color palettes
+color pallete'10
 }
 \details{
-various color palettes
+color palette 10
 }
 \examples{
 # none

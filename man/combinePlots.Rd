@@ -7,6 +7,8 @@
 combinePlots(..., trialName = NULL, pile = NULL)
 }
 \arguments{
+\item{...}{objects of class 'fieldPlots' to be combined.}
+
 \item{trialName}{[value]. Default is NULL}
 
 \item{pile}{[value]. Default is NULL}

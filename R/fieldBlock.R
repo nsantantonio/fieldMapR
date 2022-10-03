@@ -8,12 +8,6 @@
 #' @export fieldBlock
 fieldBlock <- setClass("fieldBlock", slots = c(Trial = "matrix", Line = "matrix", Entry = "matrix", plotName = "matrix", fill = "matrix", plotNo = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
 
-# #' @export 
-# length.fieldBlock <- function(fb){
-# 	sum(!is.na(fb@plotNo))
-# }
-
-
 #' @export
 length.fieldBlock <- function(x){
 	sum(!is.na(x@plotNo))
@@ -24,11 +18,17 @@ dim.fieldBlock <- function(x){
 	dim(x@plotNo)
 }
 
+#' nrow.fieldBlock
+#' @param x object of class fieldBlock
+#' @details determine number of rows (ranges) in fieldBlock
 #' @export
 nrow.fieldBlock <- function(x){
 	nrow(x@plotNo)
 }
 
+#' ncol.fieldBlock
+#' @param x object of class fieldBlock
+#' @details determine number of columns (passes) in fieldBlock
 #' @export
 ncol.fieldBlock <- function(x){
 	ncol(x@plotNo)

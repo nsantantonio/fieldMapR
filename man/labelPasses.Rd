@@ -15,6 +15,8 @@ labelPasses(blockList, startPt = c(0, 0), lastPass = 0, passDist = 5,
 \item{lastPass}{[value]. Default is NULL}
 
 \item{passDist}{[value]. Default is NULL}
+
+\item{...}{additional arguments passed to text()}
 }
 \value{
 [value]

@@ -8,6 +8,8 @@ writeStakes(..., dir = "", addPass = 0, every = 5, tooClose = 2,
   blockName = NULL)
 }
 \arguments{
+\item{...}{objects of class 'fieldPlots' or 'fieldBlock' to write stake files for.}
+
 \item{dir}{[value]. Default is ""}
 
 \item{addPass}{[value]. Default is 0}

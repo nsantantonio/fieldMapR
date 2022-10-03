@@ -2,6 +2,7 @@
 #'
 #' function to (do something)
 #'
+#' @param  ... arguments passed as a list to combineMat, typically this is multiple objects of class 'fieldPlots'.
 #' @param  sname [value]. 
 #' @return [value]
 #' @details [fill in details here]
