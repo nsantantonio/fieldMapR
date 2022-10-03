@@ -150,16 +150,21 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 					tooFar <- TRUE
 					if(saveRP){
 						R <<- i + 2
+						R <- i + 2
 						P <<- 1
+						P <- 1
 						saveRP <- FALSE
 					}
 				} else {
 					if(saveRP){
 						R <<- i + 1
+						R <- i + 1
 						if(isSerp) {
 							P <<- j + 2 - sum(border)  # I think this is right. I still dont understand why +2...
+							P <- j + 2 - sum(border)  
 						} else {
 							P <<- j + 1 - border[1]
+							P <- j + 1 - border[1]
 						}
 						saveRP <- FALSE
 					}
@@ -238,7 +243,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	}
 	# blockChange <- c(blockChange, list(c(flipInt(i + 1, ranges), j + 1)))
 	# blockChange <- c(blockChange, list(c(i, j) + 1))
-	if(updateB) B <<- borderPlotNo
+	if(updateB) {
+		B <<- borderPlotNo
+		B <- borderPlotNo
+	}
 
 	plotCorners <- lapply(plotCorners, function(x) do.call(rbind, x))
 	if (angle != 0){

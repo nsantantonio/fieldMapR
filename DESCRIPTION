@@ -34,6 +34,7 @@ Collate:
     'getCorner.R'
     'getGPStheta.R'
     'getOutline.R'
+    'globals.R'
     'harvestBags.R'
     'haversine.R'
     'labelPasses.R'
