@@ -37,9 +37,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		if(!all(order(trial@plotNo) == 1:length(trial@plotNo))){
 			stop("Plots out of order! Please order plots in acensding order!")
 		}
-		blockSize <- unique(table(trial@plotInfo[["Block"]]))
-		# nBlock <- max(trial@plotInfo[["Block"]])
-		nBlock <- length(unique(trial@plotInfo[["Block"]]))
+		# blockSize <- unique(table(trial@plotInfo[["Block"]])) # these need to be from the trial@block, not from plotInfo
+		# nBlock <- length(unique(trial@plotInfo[["Block"]]))
+		blockSize <- unique(table(trial@block))
+		nBlock <- length(unique(trial@block))
 		lastPlot <- max(trial@plotNo)
 		plotName <- trial@plotName
 		if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
