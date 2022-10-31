@@ -131,6 +131,8 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	blockSwitch <- TRUE
 	entryIndex <- 1
 
+	if(length(ignorePasses)) ignorePasses <- ignorePasses + border[1]
+
 	blockChange <- list()
 	plotCorners <- list()
 	plotCenters <- list()
