@@ -22,7 +22,7 @@ length.trialDesign <- function(x){
 
 #' @export 
 `[[.trialDesign` <- function(td, i, ...){
-	index <- which(td@block == i)
+	index <- which(td@block %in% i)
 	for(s in slotNames(td)){
 		if(is.data.frame(slot(td,s))){
 			slot(td,s) <- slot(td,s)[index,]
