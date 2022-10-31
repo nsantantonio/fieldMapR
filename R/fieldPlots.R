@@ -83,6 +83,10 @@ length.fieldPlots <- function(x){
 }
 
 #' @export
+dim.fieldPlots <- function(x){
+	dim(x@matrix)
+}
+#' @export
 print.fieldPlots <- function(x, ...){
 	print(x@matrix)
 }
