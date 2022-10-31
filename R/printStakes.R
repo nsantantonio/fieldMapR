@@ -13,7 +13,7 @@
 #' @export
 
 printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName = NULL){
- 	
+ 	# plots = blocks[[3]]; addPass = 0; every =5 ; tooClose = 2; blockName = "ABC"
 	if(class(plots) == "fieldPlots"){
 		m <- plots@matrix
 		trial <- matrix(plots@trialName, nrow(m), ncol(m))
@@ -33,7 +33,7 @@ printStakes <- function(plots, addPass = 0, every = 5, tooClose = 2, blockName =
 	 	xtras <- x[do.call(rbind, plots@needStake)]
 
 	 	if(!is.na(rmPass[1])) {
-	 		x <- x[, -rmPass]
+	 		x <- x[, -rmPass, drop = FALSE]
 	 	}
 
 		nPasses <- ncol(x)

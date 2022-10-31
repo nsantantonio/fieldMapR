@@ -12,11 +12,11 @@
 #' @examples # none
 #' @export
 printBags <- function(plots, addPass = 0, countBorder = TRUE, blockName = NULL, printBorder = FALSE){
-	# plots = blocks[[3]]; addPass = 0; countBorder = TRUE; blockName = NULL
+	# plots = blocks[[3]]; addPass = 0; countBorder = TRUE; blockName = NULL; printBorder = FALSE
 	flipInt <- function(x) {(x - max(x) - 1) * -1}
  	
 	if(class(plots) == "fieldPlots"){
-		m <- plots@matrix[which(plots)]
+		m <- plots@matrix[which(plots), drop = FALSE]
 		Trial <- matrix(plots@trialName, nrow(m), ncol(m))
 		# Entry <- plots@Entry # Note, this wont work when you have border plots!
 		# Line <- plots@Line # Note, this wont work when you have border plots!
@@ -34,10 +34,10 @@ printBags <- function(plots, addPass = 0, countBorder = TRUE, blockName = NULL, 
 # need to not print border passes even when they are counted. i.e. need counter. 
 	if(!countBorder){
 		if(!is.na(plots@borderPasses[1])) {
-	 		m <- m[, -plots@borderPasses]
-	 		Trial <- Trial[, -plots@borderPasses]
-	 		Line <- Line[, -plots@borderPasses]
-	 		Entry <- Entry[, -plots@borderPasses]
+	 		m <- m[, -plots@borderPasses, drop = FALSE]
+	 		Trial <- Trial[, -plots@borderPasses, drop = FALSE]
+	 		Line <- Line[, -plots@borderPasses, drop = FALSE]
+	 		Entry <- Entry[, -plots@borderPasses, drop = FALSE]
 	 	}
 	}	
 
@@ -46,7 +46,7 @@ printBags <- function(plots, addPass = 0, countBorder = TRUE, blockName = NULL, 
 
  	getPasses <- function(x, rmPass = NA){
 	 	if(!is.na(rmPass[1])) {
-	 		x <- x[, -rmPass]
+	 		x <- x[, -rmPass, drop = FALSE]
 	 	}
 
 	 	nPasses <- ncol(x)
@@ -54,10 +54,13 @@ printBags <- function(plots, addPass = 0, countBorder = TRUE, blockName = NULL, 
 
 		lastPass <- ceiling(nPasses / 2)
 	 	forward <- 1:ceiling(nPasses / 2)
-	 	reverse <- {lastPass + 1}:nPasses
-
-	 	c(x[, forward], x[nRanges:1, reverse])
-
+	 	if(ncol(x) > 1){
+	 		reverse <- {lastPass + 1}:nPasses
+	 		ret <- c(x[, forward], x[nRanges:1, reverse])
+	 	} else {
+	 		ret <- c(x)
+	 	}
+	 	return(ret)
  	}
 
  	if(countBorder & !printBorder) rmp <- plots@borderPasses else rmp <- NA
