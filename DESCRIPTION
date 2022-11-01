@@ -2,8 +2,8 @@ Package: fieldMapR
 Version: 0.1
 Title: fieldMapR
 Description: Package to create experimental field maps used in plant breeding.
-Author: Nicholas Santantonio <ns722@cornell.edu>
-Maintainer: Nicholas Santantonio <ns722@cornell.edu>
+Author: Nicholas Santantonio <nsant@vt.edu>
+Maintainer: Nicholas Santantonio <nsant@vt.edu>
 Encoding: UTF-8
 License: GPL-3
 RoxygenNote: 6.1.1
