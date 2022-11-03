@@ -4,12 +4,19 @@
 \alias{makeTrays}
 \title{makeTrays function}
 \usage{
-makeTrays(plots, traySize = 40, lastTray = 0, fill = c(2, 2))
+makeTrays(plots, traySize = 40, fill = c(2, 2), nMagazine = 10,
+  rowsPerMagazine = 8, rangesPerMagazine = 2)
 }
 \arguments{
 \item{plots}{either a list of trial designs, a single trial design or}
 
-\item{pile}{[value]. Default is NULL}
+\item{traySize}{numeric. number of total plots per tray. Must be a multiple of nMagazine * rowsPerMagazine}
+
+\item{fill}{numeric. vector indicating how many plots should be fill at beginning (first element) and end (last element)}
+
+\item{nMagazine}{numeric. Number of magazines per tray. Default is 10, corresponding to Hege style head row trays}
+
+\item{rowsPerMagazine}{numeric. number of rows planted in a magazine. default is 8.}
 }
 \value{
 [value]
