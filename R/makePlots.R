@@ -43,13 +43,13 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		nBlock <- length(unique(trial@block))
 		lastPlot <- max(trial@plotNo)
 		plotName <- trial@plotName
-		if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
+		# if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
 			plotNoGiven <- TRUE
 			plotNo <- trial@plotNo
-		} else {
-			plotNoGiven <- FALSE
-			plotNo <- min(trial@plotNo) - 1
-		}
+		# } else { # a plot number must be provided for trialDesign!!!!
+		# 	plotNoGiven <- FALSE
+		# 	plotNo <- min(trial@plotNo) - 1
+		# }
 		trialName <- unique(trial@trialName)
 		if(length(trialName) > 1) stop("More than one trial in plots!")
 		Entry <- trial@Entry
@@ -106,6 +106,8 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 
 	pdim <- c(passDist, rangeDist)
 
+	# otherWay <- pstart == 1 & isSerp
+	# inMiddle <- if(pstart > 1 | otherWay) TRUE else FALSE
 	inMiddle <- if(pstart > 1) TRUE else FALSE
 
 	passes <- passes + sum(border)
