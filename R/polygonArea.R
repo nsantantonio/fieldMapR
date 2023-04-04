@@ -8,7 +8,7 @@
 #' @examples # none
 #' @export
 polygonArea <- function(coords){
-	if(class(coords) != "matrix" | ncol(coords) != 2) stop("please provide a two column matrix of coordinates, x & y")
+	if(!"matrix" %in% class(coords) | ncol(coords) != 2) stop("please provide a two column matrix of coordinates, x & y")
 	coords <- unique(coords)
 	x <- coords[,1]
 	y <- coords[,2]
