@@ -4,9 +4,17 @@
 \alias{plotField}
 \title{plotField function}
 \usage{
-plotField(boundary, offset = 5, units = "ft", hshift = 3,
-  vshift = 1, showBoundry = TRUE, showPtNo = FALSE,
-  sideLength = TRUE, ...)
+plotField(
+  boundary,
+  offset = 5,
+  units = "ft",
+  hshift = 3,
+  vshift = 1,
+  showBoundry = TRUE,
+  showPtNo = FALSE,
+  sideLength = TRUE,
+  ...
+)
 }
 \arguments{
 \item{boundary}{[value]}

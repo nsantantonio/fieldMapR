@@ -4,8 +4,12 @@
 \alias{makeHarvMasterFile}
 \title{makeHarvMasterFile function}
 \usage{
-makeHarvMasterFile(block, printPlotNo = TRUE, rmBorderPasses = TRUE,
-  rmBorderRanges = FALSE)
+makeHarvMasterFile(
+  block,
+  printPlotNo = TRUE,
+  rmBorderPasses = TRUE,
+  rmBorderRanges = FALSE
+)
 }
 \arguments{
 \item{block}{[value] Object of class 'fieldBlock'}

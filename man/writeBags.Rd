@@ -4,8 +4,7 @@
 \alias{writeBags}
 \title{writeBags function}
 \usage{
-writeBags(..., dir = "", addPass = 0, countBorder = TRUE,
-  blockName = NULL)
+writeBags(..., dir = "", addPass = 0, countBorder = TRUE, blockName = NULL)
 }
 \arguments{
 \item{...}{objects of class fieldPlots or fieldBlocks to create bag files.}

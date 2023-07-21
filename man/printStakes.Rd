@@ -4,8 +4,7 @@
 \alias{printStakes}
 \title{printStakes function}
 \usage{
-printStakes(plots, addPass = 0, every = 5, tooClose = 2,
-  blockName = NULL)
+printStakes(plots, addPass = 0, every = 5, tooClose = 2, blockName = NULL)
 }
 \arguments{
 \item{plots}{[value]}

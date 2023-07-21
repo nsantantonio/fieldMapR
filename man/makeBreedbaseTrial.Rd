@@ -4,11 +4,19 @@
 \alias{makeBreedbaseTrial}
 \title{makeBreedbaseTrial function to create breedbase multi trial upload files}
 \usage{
-makeBreedbaseTrial(trial, bags = NULL,
-  breeding_program = "Virginia Tech", trial_type = "phenotyping_trial",
-  design_type = "RCBD", plantingDate = NULL, harvestDate = NULL,
-  plot_width = NULL, plot_length = NULL, checks = NULL,
-  field_size = NULL)
+makeBreedbaseTrial(
+  trial,
+  bags = NULL,
+  breeding_program = "Virginia Tech",
+  trial_type = "phenotyping_trial",
+  design_type = "RCBD",
+  plantingDate = NULL,
+  harvestDate = NULL,
+  plot_width = NULL,
+  plot_length = NULL,
+  checks = NULL,
+  field_size = NULL
+)
 }
 \arguments{
 \item{trial}{object of class trialDesign}

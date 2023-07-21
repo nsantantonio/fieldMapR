@@ -4,8 +4,14 @@
 \alias{makeTrays}
 \title{makeTrays function}
 \usage{
-makeTrays(plots, traySize = 40, fill = c(2, 2), nMagazine = 10,
-  rowsPerMagazine = 8, rangesPerMagazine = 2)
+makeTrays(
+  plots,
+  traySize = 40,
+  fill = c(2, 2),
+  nMagazine = 10,
+  rowsPerMagazine = 8,
+  rangesPerMagazine = 2
+)
 }
 \arguments{
 \item{plots}{either a list of trial designs, a single trial design or}

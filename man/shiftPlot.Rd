@@ -4,8 +4,17 @@
 \alias{shiftPlot}
 \title{shiftPlot function}
 \usage{
-shiftPlot(plots, plotNo, ang1, ang2 = ang1, offsetx = 0, offsety = 0,
-  corner = "bottomright", plotref = FALSE, plotstart = FALSE)
+shiftPlot(
+  plots,
+  plotNo,
+  ang1,
+  ang2 = ang1,
+  offsetx = 0,
+  offsety = 0,
+  corner = "bottomright",
+  plotref = FALSE,
+  plotstart = FALSE
+)
 }
 \arguments{
 \item{plots}{[value]}

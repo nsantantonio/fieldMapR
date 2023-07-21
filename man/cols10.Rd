@@ -4,7 +4,9 @@
 \name{cols10}
 \alias{cols10}
 \title{color pallete'10}
-\format{An object of class \code{character} of length 10.}
+\format{
+An object of class \code{character} of length 10.
+}
 \usage{
 cols10
 }

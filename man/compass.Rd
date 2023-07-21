@@ -4,8 +4,16 @@
 \alias{compass}
 \title{compass function}
 \usage{
-compass(x, y, angle, xsize = 0.5, ysize = 1, txtSize = 1,
-  pointyness = 3, col = "black")
+compass(
+  x,
+  y,
+  angle,
+  xsize = 0.5,
+  ysize = 1,
+  txtSize = 1,
+  pointyness = 3,
+  col = "black"
+)
 }
 \arguments{
 \item{x}{[value]}

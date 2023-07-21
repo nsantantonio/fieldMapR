@@ -4,8 +4,15 @@
 \alias{calcDist}
 \title{calcDist function}
 \usage{
-calcDist(pt1, pt2, offset = c(5, 10), arlen = 0.1, printDist = TRUE,
-  units = "ft", digits = NULL)
+calcDist(
+  pt1,
+  pt2,
+  offset = c(5, 10),
+  arlen = 0.1,
+  printDist = TRUE,
+  units = "ft",
+  digits = NULL
+)
 }
 \arguments{
 \item{pt1}{numeric. point 1, must be length 2.}

@@ -4,8 +4,7 @@
 \alias{labelPasses}
 \title{labelPasses function}
 \usage{
-labelPasses(blockList, startPt = c(0, 0), lastPass = 0, passDist = 5,
-  ...)
+labelPasses(blockList, startPt = c(0, 0), lastPass = 0, passDist = 5, ...)
 }
 \arguments{
 \item{blockList}{[value]}

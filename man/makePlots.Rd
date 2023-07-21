@@ -4,13 +4,33 @@
 \alias{makePlots}
 \title{makePlots function}
 \usage{
-makePlots(trial, ranges, passes, rangeDist = 16, passDist = 5,
-  rstart = 1, pstart = 1, angle = 0, plotNo = 1000,
-  blockSize = ranges * passes, nBlock = 1, serpentine = TRUE,
-  startSerp = FALSE, ref = c(0, 0), border = 0, borderName = "B",
-  borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL,
-  fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE,
-  Line = NULL, Pedigree = NULL, Entry = NULL)
+makePlots(
+  trial,
+  ranges,
+  passes,
+  rangeDist = 16,
+  passDist = 5,
+  rstart = 1,
+  pstart = 1,
+  angle = 0,
+  plotNo = 1000,
+  blockSize = ranges * passes,
+  nBlock = 1,
+  serpentine = TRUE,
+  startSerp = FALSE,
+  ref = c(0, 0),
+  border = 0,
+  borderName = "B",
+  borderPlotNo = 1,
+  updateB = TRUE,
+  ignorePasses = NULL,
+  fieldViewMatrix = TRUE,
+  fill = FALSE,
+  fillBlock = FALSE,
+  Line = NULL,
+  Pedigree = NULL,
+  Entry = NULL
+)
 }
 \arguments{
 \item{trial}{either an obect of class 'trialDesign' or a character vector of length 1 for the trial name.}

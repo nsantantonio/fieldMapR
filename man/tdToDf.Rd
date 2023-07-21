@@ -4,8 +4,10 @@
 \alias{tdToDf}
 \title{tdToDf function}
 \usage{
-tdToDf(td, vars = c("plotNo", "plotName", "block", "trialName", "Entry",
-  "Line", "Pedigree"))
+tdToDf(
+  td,
+  vars = c("plotNo", "plotName", "block", "trialName", "Entry", "Line", "Pedigree")
+)
 }
 \arguments{
 \item{td}{object of class 'trialDesign'}

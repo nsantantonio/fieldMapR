@@ -4,8 +4,18 @@
 \alias{drawPlots}
 \title{drawPlots function}
 \usage{
-drawPlots(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE,
-  ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...)
+drawPlots(
+  plots,
+  angle,
+  labAngle = 0,
+  plotNos = TRUE,
+  add = TRUE,
+  ptrim = 1,
+  rtrim = 2,
+  color = NA,
+  showBorderNum = FALSE,
+  ...
+)
 }
 \arguments{
 \item{plots}{[value]}

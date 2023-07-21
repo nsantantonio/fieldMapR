@@ -4,8 +4,17 @@
 \alias{drawLegend}
 \title{drawLegend function}
 \usage{
-drawLegend(plotList, boundry, cols, shiftLeg = c(0, 0),
-  labNames = NULL, scaleLeg = 0.33, rotateLabs = 0, a = 0, ...)
+drawLegend(
+  plotList,
+  boundry,
+  cols,
+  shiftLeg = c(0, 0),
+  labNames = NULL,
+  scaleLeg = 0.33,
+  rotateLabs = 0,
+  a = 0,
+  ...
+)
 }
 \arguments{
 \item{plotList}{[value]}

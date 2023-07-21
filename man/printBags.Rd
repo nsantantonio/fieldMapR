@@ -4,8 +4,13 @@
 \alias{printBags}
 \title{printBags function}
 \usage{
-printBags(plots, addPass = 0, countBorder = TRUE, blockName = NULL,
-  printBorder = FALSE)
+printBags(
+  plots,
+  addPass = 0,
+  countBorder = TRUE,
+  blockName = NULL,
+  printBorder = FALSE
+)
 }
 \arguments{
 \item{plots}{[value]}

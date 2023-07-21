@@ -4,8 +4,18 @@
 \alias{makeTrialLabels}
 \title{makeTrialLabels function}
 \usage{
-makeTrialLabels(labPos, shiftLab, labNames, cols, a = 0, labh = 8,
-  labw = 60, rotateLabs = 0, labPlots = TRUE, ...)
+makeTrialLabels(
+  labPos,
+  shiftLab,
+  labNames,
+  cols,
+  a = 0,
+  labh = 8,
+  labw = 60,
+  rotateLabs = 0,
+  labPlots = TRUE,
+  ...
+)
 }
 \arguments{
 \item{labPos}{[value]}

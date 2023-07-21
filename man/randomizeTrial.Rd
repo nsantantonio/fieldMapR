@@ -4,8 +4,17 @@
 \alias{randomizeTrial}
 \title{randomizeTrial function}
 \usage{
-randomizeTrial(ent, test, year, loc, reps, grams, randomize = "RCBD",
-  entryGrams = NULL, otherCols = NULL)
+randomizeTrial(
+  ent,
+  test,
+  year,
+  loc,
+  reps,
+  grams,
+  randomize = "RCBD",
+  entryGrams = NULL,
+  otherCols = NULL
+)
 }
 \arguments{
 \item{ent}{[value]}

@@ -4,8 +4,7 @@
 \alias{getCorner}
 \title{getCorner function}
 \usage{
-getCorner(plots, whichCorner = "bottomright",
-  whichPlotCorner = whichCorner)
+getCorner(plots, whichCorner = "bottomright", whichPlotCorner = whichCorner)
 }
 \arguments{
 \item{plots}{[value]}

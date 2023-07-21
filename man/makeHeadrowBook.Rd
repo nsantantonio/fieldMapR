@@ -4,8 +4,16 @@
 \alias{makeHeadrowBook}
 \title{makeHeadrowTrays function}
 \usage{
-makeHeadrowBook(trayName, pop, ped, checks, nTrayPerPop = 3,
-  trayL = 80, checkSetSize = 4, frontBack = FALSE)
+makeHeadrowBook(
+  trayName,
+  pop,
+  ped,
+  checks,
+  nTrayPerPop = 3,
+  trayL = 80,
+  checkSetSize = 4,
+  frontBack = FALSE
+)
 }
 \arguments{
 \item{trayName}{vector for the tray name}
