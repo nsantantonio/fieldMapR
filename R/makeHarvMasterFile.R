@@ -12,7 +12,7 @@
 #' @export
 
 makeHarvMasterFile <- function(block, printPlotNo = TRUE, rmBorderPasses = TRUE, rmBorderRanges = FALSE){
-	# block <- blocks[[9]]
+	# block <- blocks[[5]]; rmBorderRanges = TRUE; rmBorderPasses = TRUE
 	block@long[["plotName"]] <- paste0(block@long[["Trial"]], "_", block@long[["plotNo"]])
 	harvM <- block@long[c("plotName", "range", "pass", "Trial", "Line", "Entry")]
 	names(harvM) <- c("Plot ID", "Range", "Row", "Study", "Line", "Entry")
@@ -22,7 +22,8 @@ makeHarvMasterFile <- function(block, printPlotNo = TRUE, rmBorderPasses = TRUE,
 		harvM$Row <- harvM$Row - shiftRow
 	}
 	if(rmBorderRanges){
-		fillRanges <- which(apply(block@fill, 1, all))
+		# fillRanges <- which(apply(block@fill, 1, all))
+		fillRanges <- which(apply(block@fill[nrow(block@fill):1, , drop = FALSE], 1, all)) # this was backwards because the range index is human readable matrix (first row is at back), but block@long range index is correct.
 		harvM <- harvM[!harvM$Range %in% fillRanges,]
 		# isBorder <- gsub(".*_[0-9]*", "", harvM[["Plot ID"]]) != "" # relies on border plots starting with letter, others integer
 		# harvM <- harvM[!isBorder,]
