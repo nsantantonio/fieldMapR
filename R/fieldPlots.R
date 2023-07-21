@@ -88,5 +88,5 @@ dim.fieldPlots <- function(x){
 }
 #' @export
 print.fieldPlots <- function(x, ...){
-	print(x@matrix)
+	print(x@matrix, ...)
 }
