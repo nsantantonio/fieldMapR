@@ -33,3 +33,8 @@ nrow.fieldBlock <- function(x){
 ncol.fieldBlock <- function(x){
 	ncol(x@plotNo)
 }
+
+#' @export
+print.fieldBlock <- function(x, ...){
+	print(x@plotName, ...)
+}
