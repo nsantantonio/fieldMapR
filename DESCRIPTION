@@ -59,6 +59,7 @@ Collate:
     'printStakes.R'
     'radToDeg.R'
     'randomizeTrial.R'
+    'randoToTrialDesign.R'
     'readGoogleGPS.R'
     'recalcDistAngle.R'
     'rotate.R'
