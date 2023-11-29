@@ -22,8 +22,8 @@
 # ent = entry; testName = "SRWPrelim"; year = 2022; loc = c("BLAVA", "WARVA", "PNTVA"); reps = 2; grams = 75
 # reps <- c(3, 2, 1)
 # reps <- rep(3, nrow(ent)); reps[ent$Notes == "Year2"] <- 2; reps[ent$Notes == "Year1"] <- 1
-randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', entryGrams = NULL, otherCols = NULL){
-	# ent = entry; test = test; year = year; grams = locs$grams; loc = locs$Location; reps = reps;  entryGrams = entryGrams; randomize = design
+randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', entryGrams = NULL, entryTKW = NULL, nSeeds = NULL, otherCols = NULL, TKWdigits = 0){
+	# ent = entry; test = test; year = year; grams = locs$grams; loc = locs$Location; reps = reps;  entryGrams = entryGrams; entryTKW = entryTKW; nSeeds = nSeeds; randomize = design
 	ent$Test <- test
 	ent$Year <- year
 	if(length(grams) == 1){
@@ -37,6 +37,13 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 		gramsByEnt <- FALSE
 	}
 	locEntGrams  <- loc[is.na(grams)]
+
+	if(!is.null(entryTKW)){
+		tkwByEnt <- TRUE
+	} else {
+		tkwByEnt <- FALSE
+	}
+	locEntTKW  <- loc[!is.na(nSeeds)]
 	
 	# ent$grams <- grams
 	# if(is.null(ent$src_type)) ent$src_type <- NA
@@ -79,7 +86,13 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 				entij$Plot <- {series * j + 1}:{series * j + nEnt}
 				entij$Block <- j
 				# entij$grams <- grams[i]
-				if(i %in% locEntGrams & gramsByEnt) entij$grams <- entryGrams[rEnt] else entij$grams <- grams[i]
+				if(i %in% locEntGrams & gramsByEnt) {
+					entij$grams <- entryGrams[rEnt]
+				} else if(i %in% locEntTKW & tkwByEnt) {
+					entij$grams <- round(entryTKW[rEnt] * nSeeds[i] / 1000, digits = TKWdigits)
+				} else {
+					entij$grams <- grams[i]
+				}
 				locReps[[i]][[j]] <- entij
 			}
 			if(length(locReps[[i]]) > 1) locReps[[i]] <- do.call(rbind, locReps[[i]]) else locReps[[i]] <- locReps[[i]][[1]]
