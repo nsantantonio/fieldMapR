@@ -12,9 +12,9 @@
 #' @examples # none
 #' @export
 
-labelRanges <- function(blockList, startPt = c(0,0), lastRange = 0, rangeDist = 16, ...){
+labelRanges <- function(blockList, startPt = c(0,0), lastRange = 0, rangeDist = 16, addRange = 0, ...){
 	if(class(blockList) == "fieldBlock") blockList <- list(blockList)
-	nranges <- max(sapply(blockList, nrow))
-	ypos <- startPt[2] + ({lastRange+1}:nranges - 0.5) * rangeDist 
-	text(x = startPt[1], y = ypos, labels = {lastRange+1}:{nranges}, ...)
+	nranges <- max(sapply(blockList, nrow)) + addRange
+	ypos <- startPt[2] + ({lastRange+1+addRange}:nranges - 0.5) * rangeDist 
+	text(x = startPt[1], y = ypos, labels = {lastRange+1+addRange}:{nranges}, ...)
 }
