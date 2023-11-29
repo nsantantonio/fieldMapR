@@ -31,21 +31,23 @@
 #' @details [fill in details here]
 #' @examples # none
 #' @export
-# ranges = 20; passes = 30; rangeDist = 16; passDist = 5; rstart = 1; pstart = 1; angle = 0; plotNo = 1000; blockSize = ranges * passes; nBlock = 1; serpentine = TRUE; startSerp = FALSE; transpose = FALSE; ref = c(0,0); border = 0; borderName = "B"; borderPlotNo = 1; updateB = TRUE; ignorePasses = NULL; fieldViewMatrix = TRUE; fill = FALSE; fillBlock = FALSE; Line = NULL; Pedigree = NULL; Entry = NULL
-makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL){
+# trial = "test"; ranges = 20; passes = 30; rangeDist = 16; passDist = 5; rstart = 1; pstart = 1; angle = 0; plotNo = 1000; blockSize = 300; nBlock = 2; serpentine = TRUE; startSerp = FALSE; transpose = FALSE; ref = c(0,0); border = 0; borderName = "B"; borderPlotNo = 1; updateB = TRUE; ignorePasses = NULL; fieldViewMatrix = TRUE; fill = FALSE; fillBlock = FALSE; Line = NULL; Pedigree = NULL; Entry = NULL; Rep = NULL
+makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstart = 1, pstart = 1, angle = 0, plotNo = 1000, blockSize = ranges * passes, nBlock = 1, serpentine = TRUE, startSerp = FALSE, ref = c(0,0), border = 0, borderName = "B", borderPlotNo = 1, updateB = TRUE, ignorePasses = NULL, fieldViewMatrix = TRUE, fill = FALSE, fillBlock = FALSE, Line = NULL, Pedigree = NULL, Entry = NULL, Rep = NULL){
+# trial = "ExtraObs"; ranges = ranges1; passes = 36; ref = shiftPt(startPt, x = -(40 + 38*5)); angle = a; pstart = P; rstart = R; plotNo = paste0("xObs", 1:5); border = c(1,1); borderName = "W"; fill = TRUE
 	if (class(trial) %in% "trialDesign"){
 		if(!all(order(trial@plotNo) == 1:length(trial@plotNo))){
-			stop("Plots out of order! Please order plots in acensding order!")
+			stop("Plots out of order! Please order plots in ascending order!")
 		}
 		# blockSize <- unique(table(trial@plotInfo[["Block"]])) # these need to be from the trial@block, not from plotInfo
 		# nBlock <- length(unique(trial@plotInfo[["Block"]]))
+		Rep <- trial@block # change to Rep for consistency?
 		blockSize <- unique(table(trial@block))
 		nBlock <- length(unique(trial@block))
 		lastPlot <- max(trial@plotNo)
 		plotName <- trial@plotName
 		# if(length(blockSize) > 1 | length(1:lastPlot) == length(trial@plotName)){
-			plotNoGiven <- TRUE
-			plotNo <- trial@plotNo
+		plotNoGiven <- TRUE
+		plotNo <- trial@plotNo
 		# } else { # a plot number must be provided for trialDesign!!!!
 		# 	plotNoGiven <- FALSE
 		# 	plotNo <- min(trial@plotNo) - 1
@@ -58,10 +60,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		# or should I try to use S4 throughout? convert args to s4 trialDesign?
 	} else if (is.character(trial) & length(trial) == 1) {
 		trialName <- trial
+		if(is.null(Rep)) class(Rep) <- "integer"
 		if(is.null(Entry)) class(Entry) <- "integer"
 		if(is.null(Line)) class(Line) <- "character"
 		if(is.null(Pedigree)) class(Pedigree) <- "character"
-		
 		if (length(plotNo) > 1 | is.character(plotNo) | {length(plotNo) == 1 & plotNo[[1]] == 1}) {
 			plotNoGiven <- TRUE
 		} else {
@@ -86,6 +88,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		allPlotNo <- plotNo
 		plotNo <- allPlotNo[1]
 		lastPlot <- allPlotNo[length(allPlotNo)]
+		if(length(Rep) == 0){ 
+			message("Nothing provided to Rep argument, assuming single replicate.")
+			Rep <- rep(1, length(allPlotNo))
+		}
 	} else {
 		maxN <- ranges * passes
 		if(sum(blockSize) > maxN) {
@@ -121,6 +127,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 
 	plotNameij <- matrix(NA, ranges, passes)
 	fillij <- matrix(NA, ranges, passes)
+	repij <- matrix(NA, ranges, passes)
 	entij <- matrix(NA, ranges, passes)
 	lineij <- matrix(NA, ranges, passes)
 	pedij <- matrix(NA, ranges, passes)
@@ -213,6 +220,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 				plotCenters[[as.character(plotNo)]] <- c(j + 0.5, i + 0.5) * pdim
 				plotNameij[i + 1, j + 1] <- as.character(plotNo) 
 				fillij[i + 1, j + 1] <- FALSE
+				if(plotNoGiven) repij[i + 1, j + 1] <- Rep[entryIndex] else repij[i + 1, j + 1] <- as.integer(substr(as.character(plotNo), 1, 1))
 				entij[i + 1, j + 1] <- Entry[entryIndex]
 				lineij[i + 1, j + 1] <- Line[entryIndex]
 				pedij[i + 1, j + 1] <- Pedigree[entryIndex]
@@ -262,10 +270,10 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 		centersRot <- split(rotate(do.call(rbind, plotCenters), angle), 1:length(plotCenters))
 		names(centersRot) <- names(plotCenters)
 		# plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
-		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = entij, Line = lineij, Pedigree = pedij)
+		plots <- fieldPlots(centers = centersRot, corners = plotCornersRot, matrix = plotNameij, fill = fillij, needStake = blockChange, Rep = repij, Entry = entij, Line = lineij, Pedigree = pedij)
 	} else {
 		# plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = Entry, Line = Line, Pedigree = Pedigree)
-		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, fill = fillij, needStake = blockChange, Entry = entij, Line = lineij, Pedigree = pedij)
+		plots <- fieldPlots(centers = plotCenters, corners = plotCorners, matrix = plotNameij, fill = fillij, needStake = blockChange, Rep = repij, Entry = entij, Line = lineij, Pedigree = pedij)
 	}
 	if(any(ref != 0)){
 		plots@centers <- lapply(plots@centers, function(x) x + ref)
@@ -275,6 +283,7 @@ makePlots <- function(trial, ranges, passes, rangeDist = 16, passDist = 5, rstar
 	if(fieldViewMatrix) {
 		plots@matrix <- plots@matrix[nrow(plots@matrix):1, , drop = FALSE]
 		plots@fill <- plots@fill[nrow(plots@fill):1, , drop = FALSE]
+		plots@Rep <- plots@Rep[nrow(plots@Rep):1, , drop = FALSE]
 		plots@Entry <- plots@Entry[nrow(plots@Entry):1, , drop = FALSE]
 		plots@Line <- plots@Line[nrow(plots@Line):1, , drop = FALSE]
 		plots@Pedigree <- plots@Pedigree[nrow(plots@Pedigree):1, , drop = FALSE]
