@@ -4,7 +4,14 @@
 \alias{labelRanges}
 \title{labelRanges function}
 \usage{
-labelRanges(blockList, startPt = c(0, 0), lastRange = 0, rangeDist = 16, ...)
+labelRanges(
+  blockList,
+  startPt = c(0, 0),
+  lastRange = 0,
+  rangeDist = 16,
+  addRange = 0,
+  ...
+)
 }
 \arguments{
 \item{blockList}{[value]}

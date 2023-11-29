@@ -29,7 +29,8 @@ makePlots(
   fillBlock = FALSE,
   Line = NULL,
   Pedigree = NULL,
-  Entry = NULL
+  Entry = NULL,
+  Rep = NULL
 )
 }
 \arguments{

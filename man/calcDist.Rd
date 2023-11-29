@@ -11,7 +11,7 @@ calcDist(
   arlen = 0.1,
   printDist = TRUE,
   units = "ft",
-  digits = NULL
+  digits = 2
 )
 }
 \arguments{

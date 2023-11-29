@@ -13,7 +13,10 @@ randomizeTrial(
   grams,
   randomize = "RCBD",
   entryGrams = NULL,
-  otherCols = NULL
+  entryTKW = NULL,
+  nSeeds = NULL,
+  otherCols = NULL,
+  TKWdigits = 0
 )
 }
 \arguments{
