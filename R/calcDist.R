@@ -14,7 +14,7 @@
 #' @examples # none
 #' @importFrom stats dist
 #' @export
-calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE, units = "ft", digits = NULL){
+calcDist <- function(pt1, pt2, offset = c(5, 10), arlen = 0.10, printDist = TRUE, units = "ft", digits = 2){
 	if(length(pt1) == 0) stop("Please provide a valid plot number for point 1")
 	if(length(pt2) == 0) stop("Please provide a valid plot number for point 2")
 
