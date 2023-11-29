@@ -9,7 +9,7 @@
 #' @examples # none
 #' @export
 fixPlantingErrors <- function(plots, swap) {
-
+# plots = blocks[["middleFieldXI"]]; swap = wintfacFix
 	swapMat <- function(plots, swap, slots){
 		if("plotName" %in% slotNames(plots)) {
 			plotName <- plots@plotName
@@ -36,9 +36,13 @@ fixPlantingErrors <- function(plots, swap) {
 		return(plots)
 	}
 
-	if(class(swap) == "list") {
-		if(!all(sapply(swap, length) == 2)) stop("All list elements must be of length 2, with the first element indicating the plot seed, and the second indicating the plot it was planted into.")
-		swap <- do.call(rbind, swap)
+	if("list" %in% class(swap)) {
+		if(length(swap) == 2 & length(unique(sapply(swap, length))) == 1){
+			swap <- do.call(cbind, swap)
+		} else {
+			if(!all(sapply(swap, length) == 2)) stop("All list elements must be of length 2, with the first element indicating the plot seed, and the second indicating the plot it was planted into.")
+			swap <- do.call(rbind, swap)
+		}
 	}
 
 	swapplots <- c(swap)
@@ -51,7 +55,7 @@ fixPlantingErrors <- function(plots, swap) {
 		print(swapplots[!swapplots %in% plots@plotName])
 	}
 	
-	plots <- swapMat(plots, swap, c("Trial", "Line", "Entry"))
+	plots <- swapMat(plots, swap, c("Trial", "Rep", "Line", "Entry", "fill"))
 	
 	if(class(plots) == "fieldBlock"){
 		long <- plots@long
