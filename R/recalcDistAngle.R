@@ -8,7 +8,7 @@
 #' @examples # none
 #' @export
 recalcDistAngle <- function(boundry){
-	pts <- if(is.list(boundry)) boundry$points else pts <- boundry
+	pts <- if(is.list(boundry)) boundry@points else pts <- boundry
 	j <- nrow(boundry)
 
 	angles <- NULL
@@ -19,5 +19,5 @@ recalcDistAngle <- function(boundry){
 		distances[i] <- da$d
 		j <- i
 	}
-	list(points = pts, angle = angles, distance = distances)
+	fieldBoundary(points = pts, angle = angles, distance = distances)
 }
