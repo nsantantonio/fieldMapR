@@ -6,7 +6,7 @@
 #' @slot borderPasses  numeric of borderPasses
 #' @slot blockName  character of blockName
 #' @export fieldBlock
-fieldBlock <- setClass("fieldBlock", slots = c(Trial = "matrix", Line = "matrix", Entry = "matrix", Rep = "matrix", plotName = "matrix", fill = "matrix", plotNo = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
+fieldBlock <- setClass("fieldBlock", slots = c(Trial = "matrix", Line = "matrix", Entry = "matrix", Rep = "matrix", plotName = "matrix", fill = "matrix", plotNo = "matrix", range = "matrix", pass = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
 
 #' @export
 length.fieldBlock <- function(x){

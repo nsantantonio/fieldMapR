@@ -89,5 +89,5 @@ makeBlock <- function(l, blockName, pile = TRUE, serpentinePlot = FALSE, startSe
 
 	longframe <- data.frame(Trial = c(trials), Line = c(lineNames), Entry = c(entries), Rep = c(reps), plotName = c(plotNames), plotNo = c(plotNos), range = c(ranges), pass = c(passes), plantOrder = 1:prod(dim(plotNos)))
 
-	fieldBlock(Trial = trialsR, Line = lineNamesR, Entry = entriesR, Rep = repR, plotName = plotNamesR, plotNo = plotNosR, fill = fill, long = longframe, borderPasses = bpasses[[1]], needStake = stakes, blockName = blockName)
+	fieldBlock(Trial = trialsR, Line = lineNamesR, Entry = entriesR, Rep = repR, plotName = plotNamesR, plotNo = plotNosR, range = ranges, pass = passes, fill = fill, long = longframe, borderPasses = bpasses[[1]], needStake = stakes, blockName = blockName)
 }
