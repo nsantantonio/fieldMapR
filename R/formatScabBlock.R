@@ -1,6 +1,6 @@
-#' makeBreedbaseTrial function to create breedbase multi trial upload files 
+#' formatScabBlock function to make scab trays. 
 #'
-#' function to create multi trial upload files for breedbase
+#' function to create scab information for blocks. 
 #'
 #' @param block object of class fieldBlock
 #' @param trays data.frame with scab entries per tray.
