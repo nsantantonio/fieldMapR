@@ -6,22 +6,29 @@
 \usage{
 makeBreedbaseTrial(
   trial,
+  locLookUp = NULL,
   bags = NULL,
+  rmFill = TRUE,
   breeding_program = "Virginia Tech",
   trial_type = "phenotyping_trial",
   design_type = "RCBD",
-  plantingDate = NULL,
-  harvestDate = NULL,
+  planting_date = NULL,
+  harvest_date = NULL,
   plot_width = NULL,
+  weight_gram_seed_per_plot = NULL,
+  num_seed_per_plot = NULL,
   plot_length = NULL,
   checks = NULL,
-  field_size = NULL
+  field_size = NULL,
+  description = NULL
 )
 }
 \arguments{
 \item{trial}{object of class trialDesign}
 
-\item{bags}{data.frame from a bag file with plot, range and pass information}
+\item{locLookUp}{optional list or data.frame, list of length 2 with the first element being a character vector with location codes in the plot_name, and the second element being the long location name in City, State (abrv.) form. E.g. list(c("BLAVA", "WARVA"), c("Blacksburg, VA", "Warsaw, VA"))}
+
+\item{bags}{optinal data.frame from a bag file with plot, range and pass information. This is only needed if using trialDesigns for upload to include pass and range (trialDesigns dont have pass range information)}
 
 \item{breeding_program}{character string of length 1, with breeding program name}
 
@@ -29,17 +36,23 @@ makeBreedbaseTrial(
 
 \item{design_type}{character string of length 1, with design type (refer to breedbase for options)}
 
-\item{plantingDate}{optional, of the form 2020-10-23}
+\item{planting_date}{optional, of the form 2020-10-23}
 
-\item{harvestDate}{optional, of the form 2021-6-12}
+\item{harvest_date}{optional, of the form 2021-6-12}
 
 \item{plot_width}{optional, numeric value for plot width}
+
+\item{weight_gram_seed_per_plot}{optional, numeric value for grams of seed per plot}
+
+\item{num_seed_per_plot}{optional, numeric value for number of seeds per plot}
 
 \item{plot_length}{optional, numeric value for plot length}
 
 \item{checks}{optional, character vector of check names}
 
 \item{field_size}{numeric, field size in hectares}
+
+\item{description}{character vector, length 1 to append to begining of trial name for breedbase description}
 }
 \value{
 data.frame formated breedbase multi trial upload file

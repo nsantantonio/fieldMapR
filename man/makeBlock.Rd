@@ -4,7 +4,14 @@
 \alias{makeBlock}
 \title{makeBlock function}
 \usage{
-makeBlock(l, blockName, pile = TRUE, serpentinePlot = FALSE, startSerp = FALSE)
+makeBlock(
+  l,
+  blockName,
+  pile = TRUE,
+  serpentinePlot = FALSE,
+  startSerp = FALSE,
+  ...
+)
 }
 \arguments{
 \item{l}{[value]}

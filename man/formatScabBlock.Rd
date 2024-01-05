@@ -2,7 +2,7 @@
 % Please edit documentation in R/formatScabBlock.R
 \name{formatScabBlock}
 \alias{formatScabBlock}
-\title{makeBreedbaseTrial function to create breedbase multi trial upload files}
+\title{formatScabBlock function to make scab trays.}
 \usage{
 formatScabBlock(block, trays, trim = NULL, flip = 1, ...)
 }
@@ -21,7 +21,7 @@ formatScabBlock(block, trays, trim = NULL, flip = 1, ...)
 data.frame formated breedbase multi trial upload file
 }
 \description{
-function to create multi trial upload files for breedbase
+function to create scab information for blocks.
 }
 \details{
 reformats blocks for the scab nursery
