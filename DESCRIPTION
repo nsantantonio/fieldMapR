@@ -46,6 +46,7 @@ Collate:
     'makeHarvMasterFile.R'
     'makeHeadrowBook.R'
     'makePlots.R'
+    'makeSquareField.R'
     'makeTrays.R'
     'makeTrialLabels.R'
     'matrixToDist.R'
