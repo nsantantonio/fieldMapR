@@ -6,7 +6,40 @@
 #' @slot borderPasses  numeric of borderPasses
 #' @slot blockName  character of blockName
 #' @export fieldBlock
-fieldBlock <- setClass("fieldBlock", slots = c(Trial = "matrix", Line = "matrix", Entry = "matrix", Rep = "matrix", plotName = "matrix", fill = "matrix", plotNo = "matrix", range = "matrix", pass = "matrix", long = "data.frame", needStake = "list", borderPasses = "numeric", blockName = "character"))
+fieldBlock <- setClass("fieldBlock", 
+	slots = c(Trial = "matrix", 
+			  Line = "matrix", 
+			  Entry = "matrix", 
+			  Rep = "matrix", 
+			  plotName = "matrix", 
+			  fill = "matrix", 
+			  plotNo = "matrix", 
+			  range = "matrix", 
+			  pass = "matrix", 
+			  long = "data.frame", 
+			  needStake = "list", 
+			  borderPasses = "numeric", 
+			  blockName = "character", 
+			  plantingDate = "character", 
+			  harvestDate = "character"),
+			  # plantingDate = "Date", 
+			  # harvestDate = "Date"),
+	# prototype = c(Trial = "matrix", 
+	# 		  Line = "matrix", 
+	# 		  Entry = "matrix", 
+	# 		  Rep = "matrix", 
+	# 		  plotName = "matrix", 
+	# 		  fill = "matrix", 
+	# 		  plotNo = "matrix", 
+	# 		  range = "matrix", 
+	# 		  pass = "matrix", 
+	# 		  long = "data.frame", 
+	# 		  needStake = "list", 
+	# 		  borderPasses = "numeric", 
+	# 		  blockName = "character", 
+	# 		  plantingDate = "date", 
+	# 		  harvestDate = "date")
+	)
 
 #' @export
 length.fieldBlock <- function(x){
