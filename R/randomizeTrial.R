@@ -122,7 +122,7 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 			colnames(reps) <- loc
 		}
 
-		warning("Augmented design is experimental!")
+		# warning("Augmented design is experimental!")
 		# if(length(reps) != nrow(ent)){
 		# 	stop("number of reps for each line must be specified for an augmented design!")
 		# }
