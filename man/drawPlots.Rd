@@ -6,8 +6,8 @@
 \usage{
 drawPlots(
   plots,
-  angle,
-  labAngle = 0,
+  angle = 0,
+  labAngle = a + 90,
   plotNos = TRUE,
   add = TRUE,
   ptrim = 1,
@@ -18,34 +18,34 @@ drawPlots(
 )
 }
 \arguments{
-\item{plots}{[value]}
+\item{plots}{object of class 'fieldPlots'}
 
-\item{angle}{[value]}
+\item{angle}{numeric. Angle of which to draw plots}
 
-\item{labAngle}{[value]. Default is 0}
+\item{labAngle}{numeric. Angle at which to draw plot labels}
 
-\item{plotNos}{[value]. Default is TRUE}
+\item{plotNos}{logical. Should plot numbers be displayed? Default is TRUE}
 
-\item{add}{[value]. Default is TRUE}
+\item{add}{logical. should plots be drawn on an existing R device? Default is TRUE}
 
-\item{ptrim}{[value]. Default is 1}
+\item{ptrim}{numeric. Distance to remove between passes when drawing plots. Example, passes may be 5 feet wide, but plots are only 4 feet wide, then ptrim should be 5-4=1. Default is 1}
 
-\item{rtrim}{[value]. Default is 2}
+\item{rtrim}{numeric. Distance to remove between passes when drawing plots. Example, passes may be 16 feet apart, but plots are then trimmed to 14 feet long, then rtrim should be 16-14=2.Default is 2}
 
-\item{color}{[value]. Default is NA}
+\item{color}{character. color to be used for plots}
 
-\item{showBorderNum}{[value]. Default is FALSE}
+\item{showBorderNum}{logical. Should border numbers be shown?}
 
 \item{...}{arguments passed to text()}
 }
 \value{
-[value]
+nothing
 }
 \description{
-function to (do something)
+function to draw plots on an R graphics device.
 }
 \details{
-[fill in details here]
+drawPlots draws a graphical representation of field plots to an R device, such as a pdf.
 }
 \examples{
 # none

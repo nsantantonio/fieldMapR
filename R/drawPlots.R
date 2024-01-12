@@ -1,23 +1,23 @@
 #' drawPlots function
 #'
-#' function to (do something)
+#' function to draw plots on an R graphics device. 
 #'
-#' @param plots [value]
-#' @param angle [value]
-#' @param labAngle [value]. Default is 0
-#' @param plotNos [value]. Default is TRUE
-#' @param add [value]. Default is TRUE
-#' @param ptrim [value]. Default is 1
-#' @param rtrim [value]. Default is 2
-#' @param color [value]. Default is NA
-#' @param showBorderNum [value]. Default is FALSE
+#' @param plots object of class 'fieldPlots'
+#' @param angle numeric. Angle of which to draw plots 
+#' @param labAngle numeric. Angle at which to draw plot labels
+#' @param plotNos logical. Should plot numbers be displayed? Default is TRUE
+#' @param add logical. should plots be drawn on an existing R device? Default is TRUE
+#' @param ptrim numeric. Distance to remove between passes when drawing plots. Example, passes may be 5 feet wide, but plots are only 4 feet wide, then ptrim should be 5-4=1. Default is 1
+#' @param rtrim numeric. Distance to remove between passes when drawing plots. Example, passes may be 16 feet apart, but plots are then trimmed to 14 feet long, then rtrim should be 16-14=2.Default is 2
+#' @param color character. color to be used for plots
+#' @param showBorderNum logical. Should border numbers be shown?
 #' @param ... arguments passed to text()
-#' @return [value]
-#' @details [fill in details here]
+#' @return nothing
+#' @details drawPlots draws a graphical representation of field plots to an R device, such as a pdf. 
 #' @examples # none
 #' @importFrom graphics arrows lines plot points polygon segments text
 #' @export
-drawPlots <- function(plots, angle, labAngle = 0, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
+drawPlots <- function(plots, angle = 0, labAngle = a+90, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
 	# plots = breederSeed; rtrim = c(0, 15); angle = hrAng; labAngle = hrAng - 90; color = c(colsAlpha[trialColors["breederSeed"]], "gray"); cex = plotCex; plotNos = showBno; showBorderNum = TRUE; ptrim = 1; rtrim = 2; add = TRUE;
 	trimPlots <- function(x) {
 		x <- x + trim
