@@ -17,7 +17,7 @@
 #' @examples # none
 #' @importFrom graphics arrows lines plot points polygon segments text
 #' @export
-drawPlots <- function(plots, angle = 0, labAngle = a+90, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
+drawPlots <- function(plots, angle = 0, labAngle = angle+90, plotNos = TRUE, add = TRUE, ptrim = 1, rtrim = 2, color = NA, showBorderNum = FALSE, ...){
 	# plots = breederSeed; rtrim = c(0, 15); angle = hrAng; labAngle = hrAng - 90; color = c(colsAlpha[trialColors["breederSeed"]], "gray"); cex = plotCex; plotNos = showBno; showBorderNum = TRUE; ptrim = 1; rtrim = 2; add = TRUE;
 	trimPlots <- function(x) {
 		x <- x + trim

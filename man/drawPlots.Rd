@@ -7,7 +7,7 @@
 drawPlots(
   plots,
   angle = 0,
-  labAngle = a + 90,
+  labAngle = angle + 90,
   plotNos = TRUE,
   add = TRUE,
   ptrim = 1,
