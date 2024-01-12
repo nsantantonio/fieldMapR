@@ -101,7 +101,14 @@ c.fieldPlots <- function(x){
 	unlist(mL)
 }
 
-
+#' @export
+nrow.fieldPlots <- function(x){
+	nrow(x@matrix)
+}
+#' @export
+ncol.fieldPlots <- function(x){
+	ncol(x@matrix)
+}
 #' @export
 dim.fieldPlots <- function(x){
 	dim(x@matrix)
