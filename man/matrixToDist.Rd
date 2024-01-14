@@ -4,7 +4,7 @@
 \alias{matrixToDist}
 \title{plotField function}
 \usage{
-matrixToDist(m, reference = NULL)
+matrixToDist(m, reference = NULL, close = TRUE)
 }
 \arguments{
 \item{m}{n x 2 matrix of points on boundary of field. the first row will be assumed to be the reference point if no argument is provided to 'reference'}

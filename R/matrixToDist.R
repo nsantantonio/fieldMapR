@@ -8,19 +8,28 @@
 #' @details [fill in details here]
 #' @examples # none
 #' @export
-matrixToDist <- function(m, reference = NULL){
+matrixToDist <- function(m, reference = NULL, close = TRUE){
 	# if(class(boundary) != "fieldBoundry"){
-	if(is.null(reference)) reference <- m[1,]
-	if(!all(m[1,] == m[nrow(m),])) {
+	if(is.null(reference)) {
+		reference <- m[1,]
+	} else {
+		if(length(reference) != 2) stop("'reference' needs to be length two!")
+	}
+	if(!all(m[1,] == m[nrow(m),]) & close) {
 		m <- rbind(m, m[1,])
 	}
-	angle <- NULL
+	if(!all(reference == 0)){
+		refDist <- dist(cbind(c(0,0), reference))
+	} else {
+		refDist <- 0
+	}
+	angle <- 0
 	for(i in 2:nrow(m)){
 		vec <- m[i,]
 		ref <- m[i-1,]
-		angle[i-1] <- radToDeg(atan2(vec[1] - ref[1], vec[2] - ref[2]))
+		angle[i] <- radToDeg(atan2(vec[1] - ref[1], vec[2] - ref[2]))
 	}
-	distance <- sapply(2:nrow(m), function(i) dist(m[c(i-1, i),])[1])
+	distance <- c(refDist, sapply(2:nrow(m), function(i) dist(m[c(i-1, i),])[1]))
 	
 	fieldBoundary(points = m, angle = angle, distance = distance, reference = reference)
 }
