@@ -18,23 +18,23 @@ makeTrialLabels(
 )
 }
 \arguments{
-\item{labPos}{[value]}
+\item{labPos}{matrix with 2 columns indicating x and y positions of labels, or a list of vectors of length 2, with x and y coordinates per label, or a list of fieldPlots objects.}
 
-\item{shiftLab}{[value]}
+\item{shiftLab}{list of vector of vertical adjustments for trial labels, useful when fieldplots are provided to labPos, to adjust the label position vertically}
 
-\item{labNames}{[value]}
+\item{labNames}{vector of label names.}
 
-\item{cols}{[value]}
+\item{cols}{colors to be used for label names}
 
-\item{a}{[value]. Default is 0}
+\item{a}{numeric. angle at which labels should be drawn. Default is 0.}
 
-\item{labh}{[value]. Default is 8}
+\item{labh}{numeric. label height. Default is 8}
 
-\item{labw}{[value]. Default is 60}
+\item{labw}{numeric. label width. Default is 60}
 
-\item{rotateLabs}{[value]. Default is 0}
+\item{rotateLabs}{numjeric. rotation for labels. Default is 0}
 
-\item{labPlots}{[value]. Default is TRUE}
+\item{labPlots}{logical. Should plots be labeled? Useful for map development when set to FALSE to not print labels. Default is TRUE}
 
 \item{...}{additional arguments passed to text()}
 }
