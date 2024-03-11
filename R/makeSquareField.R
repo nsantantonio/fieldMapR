@@ -4,6 +4,8 @@
 #'
 #' @param w, numeric. width of field in feet
 #' @param l, length of field in feet
+#' @param refx, x coordinate to start at. Default is 0
+#' @param refy, x coordinate to start at. Default is 0
 #' @return object of class 'fieldBoundary'
 #' @details [fill in details here]
 #' @examples # none

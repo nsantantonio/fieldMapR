@@ -10,6 +10,10 @@ makeSquareField(w, l, refx = 0, refy = 0)
 \item{w, }{numeric. width of field in feet}
 
 \item{l, }{length of field in feet}
+
+\item{refx, }{x coordinate to start at. Default is 0}
+
+\item{refy, }{x coordinate to start at. Default is 0}
 }
 \value{
 object of class 'fieldBoundary'
