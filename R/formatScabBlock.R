@@ -77,7 +77,7 @@ formatScabBlock <- function(block, trays, trim = NULL, flip = 1, ...){
 
 	# for(i in c("plotName", "plotNo", "Trial", "Entry", "Line")){
 	for(i in c("plotNo", "fill", "Trial", "Entry", "Line", "plotName")){ # plotName must be done last!!
-		slot(block, i) <- makeTwoListMat(block, i, trays, trayNames = trayNames, plotNames = plotNames, ...)
+		slot(block, i) <- makeTwoListMat(block, i, trays, trayNames = trayNames, plotNames = plotNames, flip = flip, ...)
 	}
 
 	# fix border rows
