@@ -9,8 +9,8 @@
 #' @details [fill in details here]
 #' @examples # none
 #' @export
-readGoogleGPS <- function(googleCSV, ptOrder = NULL, ignore = NULL){
-	coord <- read.csv(googleCSV)
+readGoogleGPS <- function(googleCSV, ptOrder = NULL, ignore = NULL, ...){
+	coord <- read.csv(googleCSV, ...)
 	txtCoords <- strsplit(gsub(".*/", "", coord$URL), ",")
 
 	if(is.null(ptOrder)) ptOrder <- 1:length(txtCoords)
