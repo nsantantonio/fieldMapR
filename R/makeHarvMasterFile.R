@@ -16,6 +16,7 @@ makeHarvMasterFile <- function(block, printPlotNo = TRUE, rmBorderPasses = TRUE,
 	block@long[["plotName"]] <- paste0(block@long[["Trial"]], "_", block@long[["plotNo"]])
 	harvM <- block@long[c("plotName", "range", "pass", "Trial", "Line", "Entry")]
 	names(harvM) <- c("Plot ID", "Range", "Row", "Study", "Line", "Entry")
+	harvM$blockName <- block@blockName
 	if(rmBorderPasses) {
 		harvM <- harvM[!harvM$Row %in% block@borderPasses,]
 		shiftRow <- min(harvM$Row) - 1
