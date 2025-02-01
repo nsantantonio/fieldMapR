@@ -32,3 +32,8 @@ length.trialDesign <- function(x){
 	}
 	td
 }
+
+#' @export 
+`as.data.frame.trialDesign` <- function(td){
+	data.frame(Trial = td@trialName, plotName = td@plotName, Plot = td@plotNo, block = td@block, Entry = td@Entry, Line = td@Line, Pedigree = td@Pedigree)
+}
