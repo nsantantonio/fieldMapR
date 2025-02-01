@@ -16,12 +16,30 @@
 #' @examples # none
 #' @export
 plotField <- function(boundary, offset = 5, units = "ft", hshift = 3, vshift = 1, showBoundry = TRUE, showPtNo = FALSE, sideLength = TRUE, ...){
-	if(class(boundary) != "fieldBoundary" & is.matrix(boundary)){
-		boundary <- matrixToDist(boundary)
-	} 
+	if(class(boundary) == "list"){
+		if(length(boundary) > 1){
+			otherBoundaries <- boundary[2:length(boundary)]
+			plotOtherBoundLines <- TRUE
+		}
+		allPts <- do.call(rbind, lapply(boundary, slot, "points"))
+		boundary <- boundary[[1]]
+	} else {
+		if(class(boundary) != "fieldBoundary" & is.matrix(boundary)){
+			boundary <- matrixToDist(boundary)
+		} else if(class(boundary) != "fieldBoundary"){
+			stop("must provide an object of class 'fieldBoundary', a list of elements all with class 'fieldBoundary', or a 2 column matrix with x and y coords")
+		}
+		allPts <- boundary@points 
+		plotOtherBoundLines <- FALSE
+	}
 	ftPoints <- boundary@points
-	plot(ftPoints, asp = 1, type = 'n', bty = "l", xlab = units, ylab = units, ...)
+	plot(allPts, asp = 1, type = 'n', bty = "l", xlab = units, ylab = units, ...)
 	lines(rbind(ftPoints, ftPoints[1,]))
+	if(plotOtherBoundLines){
+		for(i in 1:length(otherBoundaries)){
+			lines(rbind(otherBoundaries[[i]]@points, otherBoundaries[[i]]@points[1,]))
+		}
+	}
 	if(showBoundry) points(ftPoints, pch = 4)
 	if(showPtNo) text(ftPoints[-nrow(ftPoints),], labels = 1:{nrow(ftPoints)-1})
 
