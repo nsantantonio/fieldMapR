@@ -16,27 +16,36 @@ randomizeTrial(
   entryTKW = NULL,
   nSeeds = NULL,
   otherCols = NULL,
-  TKWdigits = 0
+  TKWdigits = 0,
+  sendToBlock = NULL
 )
 }
 \arguments{
-\item{ent}{[value]}
+\item{ent}{data.frame with entry information, including Line, Pedigree, Entry, source columns}
 
-\item{test}{[value]}
+\item{test}{character. Test name, usually the same every year (e.g. GulfAtlantic, UniformEastern), cannot contain spaces!}
 
-\item{year}{[value]}
+\item{year}{integer. year of trial evaluation}
 
-\item{loc}{[value]}
+\item{loc}{character. Location name or abbreviation. Pipeline is specifically set up to deal with 5 letter capital letter abbreviations with the first three indicating the city and the last two indicating the state. Other patterns may result in unexpected behavior.}
 
-\item{reps}{[value]}
+\item{reps}{integer. vector of integers containing the number of replicates for all line s (length 1) or every line (length n).}
 
-\item{grams}{[value]}
+\item{grams}{numeric. number of grams per plot.}
 
-\item{randomize}{[value]. Default is 'RCBD'}
+\item{randomize}{character. Randomization to be performed. Valid randomizations include "RCBD" and "augmented". Supplying "no" to this argument will result in no randomization being performed. Default is 'RCBD'}
 
-\item{entryGrams}{[value]. Default is NULL}
+\item{entryGrams}{numeric. Vector of length n for grams for each entry.  Default is NULL}
 
-\item{otherCols}{[value]. Default is NULL}
+\item{entryTKW}{numeric. Thousand kernel weights per entry, length n.}
+
+\item{nSeeds}{numeric. Number of seeds per plot}
+
+\item{otherCols}{characteer. other column names in ent to be kept in randomization output. This is typically unnecessary. Default is NULL}
+
+\item{TKWdigits}{integer. rounding digits for output of grams per plot calculated from entryTKW & nSeeds}
+
+\item{sendToBlock}{list. named list indicating which lines should be put in which blocks. Each location needs its own list element, and within each location, a list of lines for each block may be given. (names of list element) under an sugmented design. This is useful when specific lines need to be in one block due to harvesting / seed saving. Can be any length 1 to n lines. Only applicable to augmented designs. Default is NULL}
 }
 \value{
 [value] object of class fieldTrial

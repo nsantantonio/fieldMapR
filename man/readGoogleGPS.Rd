@@ -4,7 +4,7 @@
 \alias{readGoogleGPS}
 \title{readGoogleGPS function}
 \usage{
-readGoogleGPS(googleCSV, ptOrder = NULL, ignore = NULL)
+readGoogleGPS(googleCSV, ptOrder = NULL, ignore = NULL, ...)
 }
 \arguments{
 \item{googleCSV}{[value]}
