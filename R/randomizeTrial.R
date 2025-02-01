@@ -2,15 +2,19 @@
 #'
 #' function to randomize trials
 #'
-#' @param ent [value]
-#' @param test [value]
-#' @param year [value]
-#' @param loc [value]
-#' @param reps [value]
-#' @param grams [value]
-#' @param randomize [value]. Default is 'RCBD'
-#' @param entryGrams [value]. Default is NULL
-#' @param otherCols [value]. Default is NULL
+#' @param ent data.frame with entry information, including Line, Pedigree, Entry, source columns
+#' @param test character. Test name, usually the same every year (e.g. GulfAtlantic, UniformEastern), cannot contain spaces!
+#' @param year integer. year of trial evaluation
+#' @param loc character. Location name or abbreviation. Pipeline is specifically set up to deal with 5 letter capital letter abbreviations with the first three indicating the city and the last two indicating the state. Other patterns may result in unexpected behavior. 
+#' @param reps integer. vector of integers containing the number of replicates for all line s (length 1) or every line (length n).
+#' @param grams numeric. number of grams per plot.
+#' @param randomize character. Randomization to be performed. Valid randomizations include "RCBD" and "augmented". Supplying "no" to this argument will result in no randomization being performed. Default is 'RCBD'
+#' @param entryGrams numeric. Vector of length n for grams for each entry.  Default is NULL
+#' @param entryTKW numeric. Thousand kernel weights per entry, length n.
+#' @param nSeeds numeric. Number of seeds per plot
+#' @param TKWdigits integer. rounding digits for output of grams per plot calculated from entryTKW & nSeeds
+#' @param otherCols characteer. other column names in ent to be kept in randomization output. This is typically unnecessary. Default is NULL
+#' @param sendToBlock list. named list indicating which lines should be put in which blocks. Each location needs its own list element, and within each location, a list of lines for each block may be given. (names of list element) under an sugmented design. This is useful when specific lines need to be in one block due to harvesting / seed saving. Can be any length 1 to n lines. Only applicable to augmented designs. Default is NULL
 #' @return [value] object of class fieldTrial
 #' @details [fill in details here]
 #' @examples # none
@@ -22,8 +26,16 @@
 # ent = entry; testName = "SRWPrelim"; year = 2022; loc = c("BLAVA", "WARVA", "PNTVA"); reps = 2; grams = 75
 # reps <- c(3, 2, 1)
 # reps <- rep(3, nrow(ent)); reps[ent$Notes == "Year2"] <- 2; reps[ent$Notes == "Year1"] <- 1
-randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', entryGrams = NULL, entryTKW = NULL, nSeeds = NULL, otherCols = NULL, TKWdigits = 0){
+randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD', entryGrams = NULL, entryTKW = NULL, nSeeds = NULL, otherCols = NULL, TKWdigits = 0, sendToBlock = NULL){
 	# ent = entry; test = test; year = year; grams = locs$grams; loc = locs$Location; reps = reps;  entryGrams = entryGrams; entryTKW = entryTKW; nSeeds = nSeeds; randomize = design
+	# ent = srwObsBB; test = "SRWObs"; year = year; loc = "BLAVA"; reps = srwObsBB$reps; grams = 75; randomize = "augmented"; entryGrams = NULL; entryTKW = NULL; nSeeds = NULL; sendToBlock = forBlk1BB
+	betterSample <- function(x, ...){
+		if (length(x) <= 1) {
+			return(x)
+		} else {
+			return(sample(x, ...))
+		}
+	}
 	ent$Test <- test
 	ent$Year <- year
 	if(length(grams) == 1){
@@ -138,21 +150,36 @@ randomizeTrial <- function(ent, test, year, loc, reps, grams, randomize = 'RCBD'
 			repSlots <- rep(repSize, maxRep)
 			repNos <- 1:maxRep 
 			# repTab <- matrix(nEnt)
+
 			for(j in 1:maxRep){
 				ischeck <- reps[,i] == maxRep
 				repL[[i]][[j]] <- which(ischeck)
 				repSlots[j] <- repSlots[j] - sum(ischeck)
 			}
+			if(!is.null(sendToBlock)){
+				preAssigned <- list()
+				for(j in 1:length(sendToBlock[[i]])){
+					preAssigned[[j]] <- which(ent$Line %in% sendToBlock[[i]][[j]])
+					repL[[i]][[j]] <- c(repL[[i]][[j]], preAssigned[[j]])
+					repSlots[j] <- repSlots[j] - length(sendToBlock[[i]][[j]])
+				}
+				allPreAssigned <- unlist(preAssigned)
+			}
 			for (k in {maxRep-1}:minRep){
 				nrl <- reps[,i] == k
 				whichLine <- which(nrl)
-				if(length(whichLine) > 1) whichLine <- sample(whichLine)
+				if(length(whichLine) > 1) whichLine <- betterSample(whichLine)
+				if(!is.null(sendToBlock)) whichLine <- whichLine[!whichLine %in% allPreAssigned]
+
+				cnt <- 0
 				for(l in whichLine){
-					stillSlots <- repSlots != 0
-					if(length(unique(repSlots[stillSlots]) == 1)){
-						whichRep <- sample(1:length(repSlots[stillSlots]))[1:k]
+					stillSlots <- repSlots > 0
+					# if(length(unique(repSlots[stillSlots]) == 1)){ # I dont know why this was coded this way... Maybe to sample equally when they are equal?
+					if(length(unique(repSlots[stillSlots])) == 1){ # changed sept 2 2024
+						# whichRep <- sample(1:length(repSlots[stillSlots]))[1:k]# I dont know why this was coded this way... Maybe to sample equally when they are equal?
+						whichRep <- betterSample(which(stillSlots), k)
 					} else {
-						whichRep <- repNos[order(repSlots[stillSlots], decreasing = TRUE)][1:k]
+						whichRep <- repNos[order(repSlots[stillSlots], decreasing = TRUE)][1:k] 
 					}
 					for(r in whichRep) {
 						repL[[i]][[r]] <- c(repL[[i]][[r]], l)
