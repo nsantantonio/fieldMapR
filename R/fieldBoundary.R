@@ -15,7 +15,7 @@ length.fieldBoundary <- function(x){
 
 #' @export 
 `[.fieldBoundary` <- function(fb, i, ...){
-	for(s in slotNames(fb)){
+	for(s in slotNames(fb)[-length(slotNames(fb))]){
 		if(is.matrix(slot(fb,s))){
 			slot(fb,s) <- slot(fb,s)[i,]
 		} else {
